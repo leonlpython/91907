@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Calendar</title>
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="css/calender.css">
+        </head>
+    
+    <body>
+        <div class="main-container">
+            <div class = "nav-container">
+                <ul class = "nav-items">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a class="active" href="#about">About</a></li>
+                    <li style = "float:left"><img src = "" alt="logo"></li>
+                </ul>
+            </div>
+
+        <div class = "days-container">
+
+
+        </div>
+
+
+        <div class="calendar-container">
+
+            <header class="calendar-header">
+
+                <p class="calendar-current-date"></p>
+
+                <div class="calendar-navigation">
+                    <span id="calendar-prev" 
+                          class="prev-navigation">
+                          &#8592;
+                          
+                    </span>
+                    <span id="calendar-next" class="next-navigation">
+                        &rarr;
+                    </span>
+                </div>
+            </header>
+    
+            <div class="calendar-body">
+                <ul class="calendar-weekdays">
+                    <li onclick="popUp()">Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <ul class="calendar-dates"></ul>
+            </div>
+        </div>
+        <script src="js/calender.js"></script>
+
+        <div id = "times-container">
+
+        </div>
+    </body>
+</html>

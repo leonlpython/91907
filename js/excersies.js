@@ -5,7 +5,7 @@ const excersises = [
     "Excersise 4",
     "Excersise 5",
     "Excersise 6",
-    "Excersise 7",
+    "Excersise 7", 
     "Excersise 8",
     "Excersise 9",
     "Excersise 10",

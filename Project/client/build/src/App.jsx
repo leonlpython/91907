@@ -1,32 +1,27 @@
-
 import { GoogleLogin } from '@react-oauth/google';
-import React, { useState ,useEffect} from 'react';  
+import React, { useState } from 'react';  
 import { jwtDecode } from "jwt-decode"; 
 
 
 
 function App() {
-
-	return (
-		<div>
-			<>
-                <GoogleLogin
-                    onSuccess={(credentialResponse) => {
-                        const decoded = jwtDecode(credentialResponse?.credential);
-                        console.log(decoded);
-                        console.log(decoded?.name);
-                        location.replace("calender.html");
-                    }}
-                    onError={() => {
-                        console.log('Login Failed');
-                    }}
-				/>
-			</>
-		</div>
-	);
-};
-
-
-
+  return (
+    <>
+        <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              const decoded = jwtDecode(credentialResponse?.credential);
+              console.log(decoded);
+              console.log(decoded?.name)
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
+    </>
+  )
+}
 
 export default App
+
+
+//db password : byTFkEQ3UTyExaN

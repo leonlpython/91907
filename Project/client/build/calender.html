@@ -55,15 +55,31 @@
 
                 <div id="app">
                     <div id="root"></div>
+
                     <script type="module" src="./src/main.jsx"></script>
+
                     <!-- Ignore errors here -->
+                     
+
                 </div>
 
 
-                <div class = "show">
-
+                <div class = "show" style="text-align: center;">
+                    
+                    
+                    <p style="font-size: 25px; text-align: center;" class = "booked-times">Booked Times</p>
+                    {%for i in data -%}
+                    <div class = "show-bookings">
+                        <p>
+                        Date: {{i[0]}} Period: {{i[1]}}
+                        </p>
+                    </div>
+                        <button class="del-booking-btn" role="button">Delete Booking</button>
+                    {%- endfor %}
                     
                 </div>
+
+                <!--<script src = "./src/show.js"></script>-->
             </div>
     <footer>
 

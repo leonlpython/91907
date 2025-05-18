@@ -66,20 +66,22 @@
 
                 <div class = "show" style="text-align: center;">
                     
-                    
+                    {% set ns = namespace(counter=0) %}
                     <p style="font-size: 25px; text-align: center;" class = "booked-times">Booked Times</p>
                     {%for i in data -%}
-                    <div class = "show-bookings">
-                        <p>
-                        Date: {{i[0]}} Period: {{i[1]}}
-                        </p>
-                    </div>
-                        <button class="del-booking-btn" role="button">Delete Booking</button>
+                    
+                        <div class = "show-bookings" id = "show-times-{{ns.counter}}">
+                            <p>
+                            Date: {{i[0]}} Period: {{i[1]}}
+                            </p>
+                        </div>
+                            <button class="del-btn" id = "del-times-{{ns.counter}}" onclick="clickFunction(this.id)">Delete Booking</button>
+                        {%set ns.counter = ns.counter + 1%}
                     {%- endfor %}
                     
                 </div>
 
-                <!--<script src = "./src/show.js"></script>-->
+                <script src = "./src/delete.js"></script>
             </div>
     <footer>
 

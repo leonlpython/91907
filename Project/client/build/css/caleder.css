@@ -168,7 +168,7 @@ pre {
 
 /*Delete Booking*/
 
-.del-booking-btn {
+.del-btn {
   background-color: #FFFFFF;
   border: 1px solid #222222;
   border-radius: 8px;
@@ -192,18 +192,18 @@ pre {
   width: auto;
 }
 
-.del-booking-btn:focus-visible {
+.del-btn:focus-visible {
   box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
   transition: box-shadow .2s;
 }
 
-.del-booking-btn:active {
+.del-btn:active {
   background-color: #F7F7F7;
   border-color: #000000;
   transform: scale(.96);
 }
 
-.del-booking-btn:disabled {
+.del-btn:disabled {
   border-color: #DDDDDD;
   color: #DDDDDD;
   cursor: not-allowed;

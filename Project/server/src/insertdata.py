@@ -12,10 +12,10 @@ def to_dict(json):
             "period":0,
             "date":0,
         }
-
         j = 0
         while j<4:
             for i in list(json["data"].values()):
+                print(i)
                 r_val[list(r_val)[j]] = str(i)
                 j+=1
         
@@ -45,10 +45,12 @@ def insert_data():
     if request.method =="POST":
         json = request.get_json()
         r_val = to_dict(json)
+        print(type(r_val["date"]))
+        print(r_val["date"])
         try:
             response = db.table("info").insert(r_val).execute()
-        except Exception as exception:
-            raise "Failed to excecute data"
+        except:
+            raise Exception("Failed to excecute data")
         return r_val
     else:
-        raise "No data"
+        raise Exception("No data")

@@ -19,8 +19,9 @@ print(response)
 print("============================")"""
 #--File Splitting
 import src.webpages
+import src.delete
+import src.deleteolddates
 import src.insertdata
-
 
 if __name__ == '__main__':
      app.run(debug=True)

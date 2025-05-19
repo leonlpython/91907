@@ -10,7 +10,6 @@ def serve():
     for i in response.data:
         data.append((i["date"],i["period"]))
 
-    print(data)
     return render_template('calender.html', data = data)#send_from_directory(app.static_folder, 
 
 

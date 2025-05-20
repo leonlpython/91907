@@ -23,11 +23,10 @@ def del_data():
     if request.method =="POST":
         json = request.get_json()
         r_val = to_dict(json)
-
+        print(json["data"])
         # Implement POST REQUEST FROM DELETE JS 
         try:
-            print(type(["date"]))
-            print(r_val["date"])
+            
             response = (
                 db.table("info")
                 .delete()

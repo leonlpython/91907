@@ -19,7 +19,7 @@ for (let col of buttons){
         const months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
         const value = sessionStorage.getItem("chosenDate");
         const today = new Date();
-
+        
         var parts =value.split(' ');
         var mydate = new Date( parseInt(parts[3]),months[parts[1]]-1, parseInt(parts[2])); 
 

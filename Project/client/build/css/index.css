@@ -1,0 +1,340 @@
+
+
+
+/*Nav styling*/
+.nav-container ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.nav-container li {
+    float: right;
+}
+
+.nav-container li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-container li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+
+/* CSS for column */
+
+.col-split2,.col-split1,.col-split0{
+    height:450px;
+    overflow:hidden;
+    background-image: url("../assets/mvhs.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+
+/* CSS for text module */
+
+.p-split2,.p-split1,.p-split0 {
+    padding-top:400px;
+    transition-duration: 1.5s;
+}
+
+
+.p-split2:hover,.p-split1:hover,.p-split0:hover {
+    padding-top:0;
+
+    color: white;
+    -webkit-text-stroke: 0.5px black;
+;
+}
+
+/* Main Container*/
+.main-container{
+    display: grid;
+    grid-template-areas:'nav nav nav'
+                        'front front front'
+                        'slideshow slideshow slideshow'
+                        'showdot showdot showdot'
+                        'navtext navtext navtext'
+                        'col0 col1 col2'
+                        'rules content content'
+                        'image image image'
+                        'external external external'
+                        'footer footer footer';
+}
+
+/*external content sub container*/
+.poster-container{
+    grid-area: poster;
+}
+
+.contract{
+    grid-area: contract;
+}
+.contract2{
+    grid-area: contract2;
+}
+
+.contract,.contract2,.poster-container{
+    padding: 2vw;
+    margin: 4vw;
+    border: 0.5vw solid #08ac54;
+    text-align: center;
+}
+
+
+.external-content-container{
+    display: grid;
+    margin: auto    ;
+    grid-template-areas:'poster contract contract2' ;
+}
+
+
+/* Main container Grid Areas*/
+.images{
+    grid-area: image;
+}
+
+footer{
+    grid-area: footer;
+}
+
+.content{
+    grid-area: content;
+}
+.external-content-container{
+    grid-area: external;
+}
+
+
+.col-split0{
+    grid-area: col0;
+}
+
+.col-split1{
+    grid-area: col1;
+}
+
+.col-split2{
+    grid-area: col2;
+}
+.nav-container{
+    grid-area: nav;
+}
+
+.front-text{
+    grid-area: front;
+
+}
+
+.rules{
+    grid-area: rules;
+    text-align: left;
+}
+
+.nav-text{
+    grid-area: navtext;
+    text-align: center;
+}
+
+.slideshow-container{
+    grid-area: slideshow;
+}
+
+.slideshow-dot{
+    grid-area: showdot;
+}
+
+/* Poster sub grid areas */
+
+/*
+.poster-container{
+    display: grid;
+    grid-template-areas:'poster2'
+                        'poster1';
+}*/
+
+.poster1{
+    grid-area: poster1;
+}
+.poster2{
+    grid-area: poster2;
+}
+
+
+/* Image section */
+
+.image-subsection-1{
+    position:absolute;
+    left: 60%;
+    top: 225%;
+}
+.image-subsection-2{
+    position:absolute;
+    left: 5%;
+    top: 360%;
+    max-width: 400px;
+}
+
+
+/* split-subcontainer- 0,1,2 sub grid ares */
+
+
+.split-subcontainer-2,.split-subcontainer-1,.split-subcontainer-0{
+    display: grid;
+    grid-template-areas:'p-split'
+                        'b-split';
+
+}
+
+.b-split0,.b-split1,.b-split2{
+    text-align: center;
+    grid-row: b-split;
+}
+.p-split0,.p-split2,.p-split1{
+    text-align: center;
+    grid-row: p-split;
+}
+
+
+
+/* 3 column split styling*/
+
+
+.col-split0,.col-split1,.col-split2{
+    
+    border: 1px solid black;
+    padding: 50px;
+    margin: 20px;
+}
+
+
+/*front-text*/
+.front-text{
+    text-align: center;
+}
+
+
+
+
+/*Colors*/
+body{
+    background-color: #04AA6D;
+}
+
+
+
+/* Slideshow styling and animation*/
+*{box-sizing: border-box;}
+.mySlides {display: none;}
+.slideshow-container img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1400px;
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: relative;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+/*
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+//Freeze animation rn
+*/
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+/*Footer styling*/
+.col_white_amrc { color:#FFF;}
+footer { width:100%; background-color:#263238; min-height:250px; padding:10px 0px 25px 0px ;}
+.pt2 { padding-top:40px ; margin-bottom:20px ;}
+footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
+.mb10 { padding-bottom:15px ;}
+.footer_ul_amrc { margin:0px ; list-style-type:none ; font-size:14px; padding:0px 0px 10px 0px ; }
+.footer_ul_amrc li {padding:0px 0px 5px 0px;}
+.footer_ul_amrc li a{ color:#CCC;}
+.footer_ul_amrc li a:hover{ color:#fff; text-decoration:none;}
+.fleft { float:left;}
+.padding-right { padding-right:10px; }
+
+.footer_ul2_amrc {margin:0px; list-style-type:none; padding:0px;}
+.footer_ul2_amrc li p { display:table; }
+.footer_ul2_amrc li a:hover { text-decoration:none;}
+.footer_ul2_amrc li i { margin-top:5px;}
+
+.bottom_border { border-bottom:1px solid #323f45; padding-bottom:20px;}
+.foote_bottom_ul_amrc {
+	list-style-type:none;
+	padding:0px;
+	display:table;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
+.foote_bottom_ul_amrc li { display:inline;}
+.foote_bottom_ul_amrc li a { color:#999; margin:0 12px;}
+
+.social_footer_ul { display:table; margin:15px auto 0 auto; list-style-type:none;  }
+.social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
+.social_footer_ul li a { color:#CCC; border:1px solid #CCC; padding:8px;border-radius:50%;}
+.social_footer_ul li i {  width:20px; height:20px; text-align:center;}
+
+/* Credit to https://bootsnipp.com/snippets/bxDBA */

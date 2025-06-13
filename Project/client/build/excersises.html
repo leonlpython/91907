@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset =  "UTF-8">
+        <meta name ="lang" content ="en">
+        <link rel="stylesheet" href="../css/excersises.css">
+        
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class = "nav-container">
+                <ul>
+                    <li><a href="http://127.0.0.1:5000">Home</a></li>
+                    <li><a href="#">Excersies</a></li>
+                    <li><a href="http://127.0.0.1:5000/calender">Book</a></li>
+                    <li><a class="active" href="#about">About</a></li>
+                    <li style = "float:left"><img src = "" alt="logo"></li>
+                </ul>
+            </div>
+            <div class="slideshow-container">
+            
+                <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="assets/poster1.png" style="width:70%">
+                <div class="text">Caption Text</div>
+                </div>
+
+                <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="assets/poster1.png" style="width:70%">
+                <div class="text">Caption Two</div>
+                </div>
+
+                <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="assets/poster1.png" style="width:70%">
+                <div class="text">Caption Three</div>
+                </div>
+
+            </div>
+            <br>
+
+            <div class = "slideshow-dot" style="text-align:center">
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+            </div>
+            <script src="./src/slideshow.js"></script>
+
+            <div class = "info-section">
+                <h1>Excersies</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            
+
+    
+            <div class = "popup-container" id="popup-wrapper" style=" text-align: center;">
+                <div class = "column-1">
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open" class="modal-radio" />
+                            <div class="modal">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open2">
+                                    <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open2" class="modal-radio" />
+                            <div class="modal modal2">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open3">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open3" class="modal-radio" />
+                            <div class="modal modal3">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class = "column-2">
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open4">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open4" class="modal-radio" />
+                            <div class="modal modal4">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open5">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open5" class="modal-radio" />
+                            <div class="modal modal5">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open6">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open6" class="modal-radio" />
+                            <div class="modal modal6">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class = "column-3">
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open7">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open7" class="modal-radio" />
+                            <div class="modal modal7">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open8">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open8" class="modal-radio" />
+                            <div class="modal modal8">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open9">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open9" class="modal-radio" />
+                            <div class="modal modal9">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class = "column-4">
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open10">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open10" class="modal-radio" />
+                            <div class="modal modal10">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open11">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open11" class="modal-radio" />
+                            <div class="modal modal11">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="content">
+                            <label class="modal-open modal-label" for="modal-open12">
+                                <img src = "./assets/muscle.jpg" alt = "" style="max-height: 70%;">
+                                <p>Open Modal</p>
+                            </label>
+                            <input type="radio" name="modal" value="open" id="modal-open12" class="modal-radio" />
+                            <div class="modal modal12">
+                                <label class="modal-label overlay">
+                                    <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                </label>
+                                <div class="content">
+                                    <div class="top">
+                                        <h2>Heading </h2>
+                                        <label class="modal-label close-btn">
+                                            <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                        </label>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <label class="modal-label action-btn">
+                                        OK
+                                        <input type="radio" name="modal" value="close" class="modal-radio"/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <script src="./src/excersises.js"></script>
+        <footer>
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href = '#'>about us</a></li>
+                                <li><a href = '#'>our services</a></li>
+                                <li><a href = '#'>privacy policy</a></li>
+                                <li><a href = '#'>affiliate program</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Get Help</h4>
+                            <ul>
+                                <li><a href = '#'>FAQ</a></li>
+                                <li><a href = '#'>shipping</a></li>
+                                <li><a href = '#'>returns</a></li>
+                                <li><a href = '#'>order status</a></li>
+                                <li><a href = '#'>payment options</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Online Shop</h4>
+                            <ul>
+                                <li><a href = '#'>dresses</a></li>
+                                <li><a href = '#'>jumpers & hoodies</a></li>
+                                <li><a href = '#'>trousers</a></li>
+                                <li><a href = '#'>sports & active wear</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Follow Us</h4>
+                            <div class='social-icons'>
+                                <a href = '#'><i class="ph ph-instagram-logo" style="font-size: 20px"></i></a>
+                                <a href = '#'><i class="ph ph-pinterest-logo" style="font-size: 20px"></i></a>
+                                <a href = '#'><i class="ph ph-linkedin-logo" style="font-size: 20px"></i></a>
+                                <a href = '#'><i class="ph ph-youtube-logo" style="font-size: 20px"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>

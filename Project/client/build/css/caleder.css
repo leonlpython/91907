@@ -5,12 +5,20 @@ ul {
     overflow: hidden;
     background-color: #333;
 }
-
-li {
+body{
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+html{
+    background-color: #D5CAD6;
+}
+.nav-container li {
     float: right;
+    list-style: none;
 }
 
-li a {
+.nav-container li a {
     display: block;
     color: white;
     text-align: center;
@@ -18,7 +26,7 @@ li a {
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
+.nav-container li a:hover:not(.active) {
     background-color: #111;
 }
 
@@ -108,7 +116,6 @@ pre {
 /*Grid container styling*/
 /**/
 .book-btn-1, .book-btn-2, .book-btn-3{
-    text-align: center;
     background-color: lightblue;
     margin: 20px;
     border-radius: 25px;
@@ -135,10 +142,9 @@ pre {
                         'btn';
 }
 .btn-bookings{
+    
     grid-area: btn;
     display: grid;
-    float: center;
-    padding: 0;
     grid-template-areas: 
         'book1'
         'book2'
@@ -147,6 +153,7 @@ pre {
 
 .calender-container{
     grid-area: calender;
+    margin: 10px;
 }
 
 .nav-container{
@@ -155,16 +162,19 @@ pre {
 
 .main-container{
     display: grid;
+    float: center;
     grid-template-areas: 
         'nav nav'
         'slideshow slideshow'
         'slideshowdot slideshowdot'
-        'info info'
         'calender btncontainer'
-        'show btncontainer';
+        'show info'
+        'footer footer';
 }
 
-
+footer{
+    grid-area: footer;
+}
 .info-section{
     grid-area: info;
     text-align: center;
@@ -180,63 +190,6 @@ pre {
 .show{
     grid-area:show;
     display: absolute;
-}
-/*show class grid areas*/
-/*
-.booked-times{
-    grid-area: booked-times;
-}
-.show-bookings{
-    grid-area: show-bookings;
-}
-.del-booking-btn{
-    grid-area: del-booking-btn;
-}
-
-*/
-
-/*Delete Booking*/
-
-.del-btn {
-  background-color: #FFFFFF;
-  border: 1px solid #222222;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #222222;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  padding: 13px 23px;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
-}
-
-.del-btn:focus-visible {
-  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-  transition: box-shadow .2s;
-}
-
-.del-btn:active {
-  background-color: #F7F7F7;
-  border-color: #000000;
-  transform: scale(.96);
-}
-
-.del-btn:disabled {
-  border-color: #DDDDDD;
-  color: #DDDDDD;
-  cursor: not-allowed;
-  opacity: 1;
 }
 
 
@@ -315,4 +268,110 @@ pre {
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
     color: rgba(0, 0, 0, 0.65);
     transform:translateY(10px)
+}
+
+
+/*Footer Stylgin*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.footer{
+    padding: 20px;
+    background: #24262b;
+    font-family: "Poppins", sans-serif;
+    
+    margin:0;
+}
+
+.container{
+    max-width: 1170px;
+    margin: 50px auto 0;
+}
+
+.row{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.footer-col{
+    width:25%;
+    padding: 0 15px;
+}
+
+.footer-col h4{
+    font-size: 18px;
+    color:#fff;
+    font-weight: 500;
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 2px;
+    width:50px;
+    background: #088178;
+    box-sizing: border-box;
+}
+
+.footer-col ul{
+    list-style: none;
+}
+
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.footer-col ul li > a{
+    font-size: 16px;
+    font-weight:300;
+    color:#fff;
+    text-transform: capitalize;
+    text-decoration: none;
+    color:#bbb;
+    display: block;
+    transition: .3s ease;
+}   
+
+.footer-col ul li > a:hover{
+    color:#fff;
+    padding-left: 8px;
+}
+
+.footer-col .social-icons{
+    font-size:16px;
+}
+
+.footer-col .social-icons > a{
+    display:inline-block;
+    width:40px;
+    height:40px;
+    text-align: center;
+    margin:0 10px 10px 0;
+    color:#bbb;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+
+.footer-col .social-icons > a:hover{
+    transform: translateY(-5px);
+    color:#fff;
+}
+
+@media (max-width:768px){
+    .footer-col{
+        margin-bottom: 30px;
+        width:50%;
+    }
+}
+
+@media (max-width:539px){
+    .footer-col{
+        width:100%;
+    }
 }

@@ -9,7 +9,7 @@ const times = document.querySelectorAll(".book-btn");
 let bookings = document.getElementById("button-content");
 const periods = [1,2,3];
 let time = document.getElementsByClassName("selected")[0];
-let value = sessionStorage.getItem("chosenDate");
+
 
 
 let date = new Date();
@@ -17,47 +17,52 @@ let date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth();
 
-function createBtns(value){
-    let activeTimes = sessionStorage.getItem("activeTimes");
+function createBtns(value, data){ 
     
-    const days = {"Mon":1,"Tue":2,"Wed":3,"Thu":4,"Fri":5,"Sat":6,"Sun":7}
-    const months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
+    var activeTimes = data["data"];
+    var days = {"Mon":1,"Tue":2,"Wed":3,"Thu":4,"Fri":5,"Sat":6,"Sun":7}
+    var months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
     var parts =value.split(' ');
 
-    const curr = months[parts[1]]
-    let month = curr.toString()
+    var curr = months[parts[1]]
+    var month = curr.toString()
     if (months[parts[1]]+1 < 10){
         month ="0"+curr
     }
-    let stringDate = parts[3]+"-"+month+"-"+parts[2];
-    let isActive = false;
-    let sessionTimes = [];
-    const dummy = activeTimes.split(",");
-    let arr = [];
-    for (let j = 0;j<dummy.length;j++){
-        if(j%2 == 0){
-            arr.push(dummy[j].slice(6,16));
-        }else{    
-            arr.push(dummy[j][1]);
-            sessionTimes.push(arr);
-            arr = [];
+    var stringDate = parts[3]+"-"+month+"-"+parts[2];
+    var isActive = false;
+    /*var sessionTimes = {};
+    for(let j = 0; j < activeTimes.length;j++){
+        if(activeTimes[j][0] in sessionTimes){
+            continue
+        }else{
+            sessionTimes[activeTimes[j][0]] = [];
         }
+        sessionTimes[activeTimes[j][0]].push(data["data"][j][1])
+    }*/
+
+    var sessionTimes = [];
+    for(let j = 0; j < activeTimes.length;j++){
+        if(activeTimes in sessionTimes){
+            continue
+        }
+        sessionTimes.push(data["data"][j][1])
     }
     bookings.replaceChildren();
-    
     for(let i = 0;i<3;i++){
-        for(let idx = 0;idx < sessionTimes.length;idx++){
-            if (sessionTimes[idx][0] == stringDate && parseInt(sessionTimes[idx][1]) == i+1){
+        if (sessionTimes.length != 0){
+            if (sessionTimes.includes(i+1) == true){
                 isActive = true;
             }
         }
-        if (isActive == false){
+        if(isActive == false){
             var btn = document.createElement("button");
             btn.className = "book-btn";
             btn.id = `btn-${i}`;
             btn.textContent = `Period ${periods[i]}`;
 
             btn.style.height = '150px';
+            btn.style.maxWidth = "600px";
             btn.style.alignItems = "center";
             btn.style.backgroundColor = "#FFFFFF";
             btn.style.border = "2px solid rgba(0,0,0,0.1)";
@@ -72,7 +77,7 @@ function createBtns(value){
             btn.style.fontWeight = "600";
             btn.style.justifyContent = "center";
             btn.style.lineHeight = "1.25";
-            btn.style.margin = "0";
+            btn.style.margin = "10px";
             btn.style.minHeight = "3rem";
             btn.style.padding = "calc(.875rem - 1px) calc(1.5rem - 1px)";
             btn.style.textDecoration ="none";
@@ -81,16 +86,24 @@ function createBtns(value){
             btn.style.touchAction = "manipulation";
             btn.style.verticalAlign = "baseline";
             btn.style.width = "auto";
-            
             bookings.appendChild(btn);
         }
         isActive = false;
+        
     }
 }
 
 
+function removeTimes(delPeriod){
+    const childButton = document.getElementById(`btn-${delPeriod-1}`);
+    if (bookings && childButton) {
+        bookings.removeChild(childButton);
+    }
+}
+
 
 function displayCalendar() {
+    
   const firstDay = new Date(year, month, 1);
 
   const lastDay = new Date(year, month + 1, 0);
@@ -137,13 +150,73 @@ function displaySelected() {
     day.addEventListener("click", (e) => {
         let selectedDate = e.target.dataset.date;
         selected.innerHTML = `Selected Date : ${selectedDate}`;
-        sessionStorage.setItem("chosenDate", selectedDate);
-        createBtns(selectedDate);
-        onclickBtn(selectedDate);
+        
+        let data = {
+            firstname: "Test",
+            lastname: "Test",
+            period:1,
+            date:selectedDate
+            };
+        socket.emit("update_display",{"data":data})
+
+        socket.on("display_calender",(data) =>{
+            createBtns(selectedDate,data);
+            onclickBtn(selectedDate);
+        });
         return selectedDate;
     });
   });
 }
+
+
+function onclickBtn(selDate){
+    let counter = 0;
+
+    const periods = [1,2,3];
+    let time = document.getElementsByClassName("selected")[0];
+
+    var buttons = document.querySelectorAll(".book-btn");
+    for (let col of buttons){
+        col.addEventListener("mouseover", function(e){
+            col.style.borderColor = "rgba(0, 0, 0, 0.15)";
+            col.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 4px 12px";
+            col.style.color = "rgba(0, 0, 0, 0.65)";
+            col.style.transform="translateY(-1px)";
+        })
+        col.addEventListener("mouseout",function(e){
+            col.style.borderColor = "rgba(0, 0, 0, 0.15)";
+            col.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 4px 12px";
+            col.style.color = "black";
+            col.style.transform="translateY(0px)";
+        })
+        col.addEventListener("click", function(e) {
+            counter ++;
+            const days = {"Mon":1,"Tue":2,"Wed":3,"Thu":4,"Fri":5,"Sat":6,"Sun":7}
+            const months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
+            const today = new Date();
+            var parts =selDate.split(' ');
+            var mydate = new Date( parseInt(parts[3]),months[parts[1]]-1, parseInt(parts[2])); 
+            if(today.getTime()>mydate.getTime()){
+                alert("Select a date that's in the present");
+            } else if(counter >1){
+                alert("You cannot select a time more than once");
+            }else{
+                //id: 10, <-- Come back to this later
+                let data = {
+                    firstname: "Test",
+                    lastname: "Test",
+                    period:periods[e.target.id[e.target.id.length-1]],
+                    date:mydate
+                    };
+                socket.emit('times', {
+                    'data':data
+                });
+                
+            }
+        });
+    }
+}
+
 // Call the function to display the calendar
 displayCalendar();
 displaySelected();
@@ -159,9 +232,8 @@ previous.addEventListener("click", () => {
   month = month - 1;
 
   date.setMonth(month);
-
-  displayCalendar();
-  displaySelected();
+displayCalendar();
+displaySelected();
 });
 
 next.addEventListener("click", () => {
@@ -175,98 +247,6 @@ next.addEventListener("click", () => {
 
   month = month + 1;
   date.setMonth(month);
-
-  displayCalendar();
-  displaySelected();
+displayCalendar();
+displaySelected();
 });
-
-//module.exports = displaySelected;  
-
-
-
-
-
-
-
-
-function onclickBtn(selDate){
-    let counter = 0;
-    const periods = [1,2,3];
-    let time = document.getElementsByClassName("selected")[0];
-
-    var buttons = document.querySelectorAll(".book-btn");
-    for (let col of buttons){
-        col.addEventListener("mouseover", function(e){
-            col.style.borderColor = "rgba(0, 0, 0, 0.15)";
-            col.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 4px 12px";
-            col.style.color = "rgba(0, 0, 0, 0.65)";
-            col.style.transform="translateY(-1px)";
-        })
-        col.addEventListener("mouseout",function(e){
-            col.style.borderColor = "rgba(0, 0, 0, 0.15)";
-            col.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 4px 12px";
-            col.style.color = "rgba(0, 0, 0, 0.65)";
-            col.style.transform="translateY(0px)";
-        })
-        col.addEventListener("click", function(e) {
-            counter ++;
-            const days = {"Mon":1,"Tue":2,"Wed":3,"Thu":4,"Fri":5,"Sat":6,"Sun":7}
-            const months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
-            const today = new Date();
-            
-            var parts =selDate.split(' ');
-            var mydate = new Date( parseInt(parts[3]),months[parts[1]]-1, parseInt(parts[2])); 
-            if(today.getTime()>mydate.getTime()){
-                alert("Select a date that's in the present");
-            } else if(counter >1){
-                alert("You cannot select a time more than once");
-            }else{
-                //id: 10, <-- Come back to this later
-                let data = {
-                    firstname: "Test",
-                    lastname: "Test",
-                    period:periods[e.target.id[e.target.id.length-1]],
-                    date:value
-                    };
-                fetch("http://127.0.0.1:5000/receive", {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({data})
-                })
-                .then(response => response.text())
-                .then(result => {
-                    console.log("Server says:", result);
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                });
-            }
-        });
-    }
-}
-
-
-/*
-
-/*
-<!-- HTML !-->
-
-.button-6:hover,
-.button-6:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.button-6:hover {
-  transform: translateY(-1px);
-}
-
-.button-6:active {
-  background-color: #F0F0F1;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
-}
-*/

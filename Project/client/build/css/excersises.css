@@ -53,14 +53,9 @@ body{
     color: #424242;
     margin: 20px auto;
     padding: 20px;
-    
     background: #4caf50;
 }
 
-.card:hover{
-    background-color: #215d24;
-    transform: scale(101%);
-}
 
 .modal-open {
     display: inline-block;
@@ -69,7 +64,10 @@ body{
     color: #fff;
 }
 
-
+.content img{
+    border-radius: 10px;
+    cursor: pointer;
+}
 .modal-radio {
     position: absolute;
     visibility: hidden;
@@ -81,7 +79,6 @@ body{
     height: 100%;
     width: 100%;
     top: 0;
-    
     left: 0;
     overflow: hidden;
     opacity: 0;
@@ -94,6 +91,13 @@ body{
 #modal-open:checked + .modal,#modal-open2:checked + .modal2,#modal-open3:checked + .modal3,#modal-open4:checked + .modal4,#modal-open5:checked + .modal5,#modal-open6:checked + .modal6,#modal-open7:checked + .modal7,#modal-open8:checked + .modal8,#modal-open9:checked + .modal9,#modal-open10:checked + .modal10,#modal-open11:checked + .modal11,#modal-open12:checked + .modal12{
     opacity: 1;
     transform: scale(1);
+}
+
+.card:hover{
+    background-color: #215d24;
+}
+.modal-open-modal-label{
+    text-align: center;
 }
 
 
@@ -155,7 +159,6 @@ body{
   color:#fff;
   border-radius:15px;
 }
-
 
 /*Grid containers*/
 .main-container{

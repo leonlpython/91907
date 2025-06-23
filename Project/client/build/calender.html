@@ -98,14 +98,7 @@
                     <h1 style="text-align: center;" class = "btn-header">Availiable Times</h1>
                     <div class = "btn-bookings" id = "button-content"></div>
                 </div>
-                <script>
-                    const items = [];
-                    {%for k in data -%}
-                        items.push("{{ k }}");
-                    {% endfor %}
-                    console.log(items)
-                    sessionStorage.setItem("activeTimes",items);
-                </script>
+                
                 <script src="./src/calender.js"></script>
 
 

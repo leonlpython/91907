@@ -4,13 +4,12 @@ let days = document.querySelector(".days");
 let previous = document.querySelector(".left");
 let next = document.querySelector(".right");
 let selected = document.querySelector(".selected");
-const times = document.querySelectorAll(".book-btn");
 let bookings = document.getElementById("button-content");
 const periods = [1,2,3];
-let time = document.getElementsByClassName("selected")[0];
-const date = new Date();
-const year = date.getFullYear();
-const month = date.getMonth();
+
+let date = new Date();
+let year = date.getFullYear();
+let month = date.getMonth();
 
 
 function createBtns(selectDate, data){ 
@@ -20,7 +19,7 @@ function createBtns(selectDate, data){
         data: data queried from table
     */
     const months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
-
+    let dummyDate = sessionStorage.setItem("dummyDate",selectDate);
     var activeTimes = data["data"];
     var parts =selectDate.split(' ');
     var curr = months[parts[1]]
@@ -103,7 +102,6 @@ function displayCalendar() {
     /*
     Displays calender
     */
-   
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
     const firstDayIndex = firstDay.getDay(); //4
@@ -141,12 +139,12 @@ function displaySelected() {
         day.addEventListener("click", (e) => {
             let selectedDate = e.target.dataset.date;
             selected.innerHTML = `Selected Date : ${selectedDate}`;
-            let data = {
+            data = {
                 firstname: "Test",
                 lastname: "Test",
                 period:1,
                 date:selectedDate
-                };
+            };
             socket.emit("update_display",{"data":data})
             socket.on("display_calender",(data) =>{
                 createBtns(selectedDate,data);
@@ -158,12 +156,41 @@ function displaySelected() {
 }
 
 
+async function confirmBtns(changeText){
+
+    let closeModalBtn = document.getElementById('close-modal-btn');
+    var modalOverlay = document.getElementById('confirmation-modal-overlay');
+    let modalTextContent = document.getElementsByClassName("confirmation-text")[0];
+    let openModalBtn = document.getElementById("confirm-booking-time");
+    modalTextContent.textContent = changeText;
+        modalOverlay.classList.remove('hidden');
+        return await new Promise(function(resolve,reject){
+            // Close modal when clicking outside the content
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                modalOverlay.classList.add("hidden")
+                resolve(false);
+            }
+        }); 
+        closeModalBtn.addEventListener('click', function(e){
+            modalOverlay.classList.add('hidden');
+            resolve(false);
+        });
+        openModalBtn.addEventListener("click",function(event){
+            event.stopPropagation()
+            modalOverlay.classList.add('hidden');
+            // Removing active event listeners
+            openModalBtn.replaceWith(openModalBtn.cloneNode(true));
+            resolve(true);
+           
+        });
+    }).then()
+}
+
+
 function onclickBtn(selDate){
-    let counter = 0;
-
     const periods = [1,2,3];
-    let time = document.getElementsByClassName("selected")[0];
-
+    
     var buttons = document.querySelectorAll(".book-btn");
     for (let col of buttons){
         col.addEventListener("mouseover", function(e){
@@ -179,31 +206,42 @@ function onclickBtn(selDate){
             col.style.transform="translateY(0px)";
         })
         col.addEventListener("click", function(e) {
-            counter ++;
             const months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
             const today = new Date();
             var parts =selDate.split(' ');
             var mydate = new Date( parseInt(parts[3]),months[parts[1]]-1, parseInt(parts[2])); 
             if(today.getTime()>mydate.getTime()){
                 alert("Select a date that's in the present");
-            } else if(counter >1){
-                alert("You cannot select a time more than once");
+            } else if(bookings.children.length!= 3){
+                alert("You cannot select a time more than once per day");
             }else{
-                //id: 10, <-- Come back to this later
-                let data = {
-                    firstname: "Test",
-                    lastname: "Test",
-                    period:periods[e.target.id[e.target.id.length-1]],
-                    date:mydate
-                    };
-                socket.emit('times', {
-                    'data':data
-                });
-                
+
+                newText = `Please confirm the booking for Date: ${selDate} Period: ${periods[e.target.id[e.target.id.length-1]]}`
+                confirmBtns(newText).then(result =>{
+                    if(result == true){
+                    let data = {
+                        firstname: "Test",
+                        lastname: "Test",
+                        period:periods[e.target.id[e.target.id.length-1]],
+                        date:mydate
+                        };
+                    socket.emit('times', {
+                        'data':data
+                    });
+
+                    // Removing active event listeners
+                    col.replaceWith(col.cloneNode(true)); 
+                }
+                }).catch(error =>{
+                    console.log(error)
+                }).finally(() =>{
+                    //Pass
+                })
             }
-        });
-    }
-}
+        }
+    )}
+};
+
 
 // Call the function to display the calendar
 displayCalendar();
@@ -227,7 +265,6 @@ displaySelected();
 next.addEventListener("click", () => {
   days.innerHTML = "";
   selected.innerHTML = "";
-
   if (month > 11) {
     month = 0;
     year = year + 1;
@@ -235,6 +272,6 @@ next.addEventListener("click", () => {
 
   month = month + 1;
   date.setMonth(month);
-displayCalendar();
-displaySelected();
+    displayCalendar();
+    displaySelected();
 });

@@ -12,14 +12,8 @@ def serve():
 def serve_book():
     return render_template('calender.html')
 
-
-@app.route("/signin")
-def signin():
-    return send_from_directory(app.static_folder, 'signin.html')
-
-
 @socketio.on("join_booked")
-def update_data(d):
+def update_data(_):
     response = get.get_data(lastname = "Test",firstname = "Test")
     data = []
 

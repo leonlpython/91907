@@ -85,6 +85,16 @@ socket.on("update_del",(data) =>{
     const showTime = document.getElementById(`ButtonContainer-${parseInt(data["id"])}`);
     /*If bookings and showtime is not undefined then remove showtime*/
     if (bookings && showTime) {
-        showBooked.removeChild(showTime);
+        dummyDate = sessionStorage.getItem("dummyDate")
+        replaceText = `Please confirm the deletion for the booking: Date: ${dummyDate} Period: ${data["data"][1]}`
+        confirmBtns(replaceText).then(result =>{
+            if(result == true){
+                showBooked.removeChild(showTime);
+            }})
+        .catch(error =>{
+            console.log(error)
+        }).finally(() =>{
+            //Pass
+            });
     }
 })

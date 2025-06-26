@@ -1,3 +1,7 @@
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 /*Navigation styling*/
 ul {
     margin: 0;
@@ -6,23 +10,28 @@ ul {
     background-color: #333;
 }
 body{
-    margin: 10px;
+    font-family: Roboto;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 15px;
 }
-html{
-    background-color: #D5CAD6;
-}
+
 .nav-container li {
     float: right;
     list-style: none;
+
 }
 
+.nav-container{
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    z-index: 1;
+}
 .nav-container li a {
+    margin: auto;
     display: block;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 25px 30px;
     text-decoration: none;
 }
 
@@ -30,21 +39,14 @@ html{
     background-color: #111;
 }
 
-.active {
-    background-color: #04AA6D;
-}
-
-
-
 /*Calender styling*/
 .calender-container {
-    background-color: aliceblue;
+    background-color: #EFEFF0;
     border-radius: 25px;
 }
 .calender-wrapper {
     align-items: center;
     margin: auto;
-    font-family: "Courier New", Courier, monospace;
     background-color: #fff;
     border-radius: 25px;
 }
@@ -62,7 +64,6 @@ header {
 }
 
 .header-display p {
-    color: rgb(16, 16, 237);
     margin: 5px;
     font-size: 1.5rem;
     word-spacing: 0.5rem;
@@ -73,7 +74,6 @@ pre {
     margin: 0;
     cursor: pointer;
     font-size: 1.8rem;
-    color: rgb(25, 25, 201);
 }
 
 .days, .week {
@@ -91,9 +91,9 @@ pre {
     height: 2rem;
 }
 .days div:hover {
-    border: 2px solid rgb(25, 25, 201);
+    border: 2px solid #6B5562;
     border-radius: 10px;
-    color: rgb(25, 25, 201);
+    color: #6B5562;
     cursor: pointer;
 }
 
@@ -101,7 +101,7 @@ pre {
     opacity: 0.5;
 }
 .current-date {
-    background-color: rgb(133, 133, 192);
+    background-color: #6B5562;
     border-radius: 100%;
 }
 
@@ -134,15 +134,19 @@ pre {
 .btn-header{
     grid-area: btnheader;
 }
+.btn-text{
+    grid-area: btntext;
+}
 .btn-container{
     grid-area: btncontainer;
     max-height: 400px;
     display: grid;
     grid-template-areas:'btnheader'
+                        'btntext'
                         'btn';
 }
 .btn-bookings{
-    
+    margin: 2px 100px;
     grid-area: btn;
     display: grid;
     grid-template-areas: 
@@ -153,13 +157,19 @@ pre {
 
 .calender-container{
     grid-area: calender;
-    margin: 10px;
+    margin: 2px 50px;
 }
 
 .nav-container{
     grid-area: nav;
 }
-
+.image-section{
+    grid-area: imagesection;
+}
+.center-text{
+    grid-area: centertext;
+    text-align: center;
+}
 .main-container{
     display: grid;
     float: center;
@@ -167,6 +177,8 @@ pre {
         'nav nav'
         'slideshow slideshow'
         'slideshowdot slideshowdot'
+        'centertext centertext'
+        'imagesection imagesection'
         'calender btncontainer'
         'show info'
         'footer footer';
@@ -197,15 +209,16 @@ footer{
 
 
 /* Slideshow styling and animation*/
-*{box-sizing: border-box;}
+*{box-sizing: border-box;
+border-radius: 10px;}
 .mySlides {display: none;}
 .slideshow-container img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1400px;
   position: relative;
   margin: auto;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -271,15 +284,11 @@ footer{
 }
 
 
-/*Footer Stylgin*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*Footer Styling*/
 
-
-.footer{
+footer{
     padding: 20px;
     background: #24262b;
-    font-family: "Poppins", sans-serif;
-    
     margin:0;
 }
 
@@ -314,12 +323,13 @@ footer{
     bottom: -10px;
     height: 2px;
     width:50px;
-    background: #088178;
+    background: #C9F0FF;
     box-sizing: border-box;
 }
 
 .footer-col ul{
     list-style: none;
+    background-color: #24262b;
 }
 
 .footer-col ul li:not(:last-child){
@@ -329,7 +339,6 @@ footer{
 .footer-col ul li > a{
     font-size: 16px;
     font-weight:300;
-    color:#fff;
     text-transform: capitalize;
     text-decoration: none;
     color:#bbb;
@@ -338,7 +347,7 @@ footer{
 }   
 
 .footer-col ul li > a:hover{
-    color:#fff;
+    color:black;
     padding-left: 8px;
 }
 
@@ -374,4 +383,101 @@ footer{
     .footer-col{
         width:100%;
     }
+}
+
+
+/*Button Confirmation Modal Styling*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+
+.hidden {
+  display: none;
+}
+.modal-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    max-height: 500px;
+    width: 90%;
+    text-align: center;
+}
+/*Confirmation modal Button styling*/
+#confirm-booking-time,#close-modal-btn {
+  align-items: center;
+  background-color: #fff;
+  margin: 20px 50px;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 4vw;
+  overflow: visible;
+  padding: 2px 24px;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+}
+
+#confirm-booking-time:hover,#close-modal-btn:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+#confirm-booking-time:active,#close-modal-btn:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+#confirm-booking-time:focus,#close-modal-btn:focus  {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+#confirm-booking-time:not(:disabled),#close-modal-btn:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+#confirm-booking-time:not(:disabled):hover,#close-modal-btn:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+#confirm-booking-time:not(:disabled):focus,#close-modal-btn:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+#confirm-booking-time:not(:disabled):active,#close-modal-btn:not(:disabled):active  {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+#confirm-booking-time:disabled,#close-modal-btn:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }

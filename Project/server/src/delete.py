@@ -5,18 +5,7 @@ from flask_socketio import emit
 from dateutil.parser import parse
 
 @socketio.on('del')
-def del_data(data):
-    print("========================")
-    print("========================")
-    print("========================")
-    print(data)
-    print(parse(data["data"]["date"]).isoformat())
-    print("========================")
-    print("========================")
-    print("========================")
-  
-    
-    # Implement POST REQUEST FROM DELETE JS 
+def del_data(data): 
     try:
         response = (
             db.table("info")

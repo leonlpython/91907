@@ -61,42 +61,40 @@ function createBtns(selectDate, data){
             btn.style.alignItems = "center";
             btn.style.backgroundColor = "#FFFFFF";
             btn.style.border = "2px solid rgba(0,0,0,0.1)";
-            btn.style.borderRadius= ".25rem";
-            btn.style.boxShadow = "rgba(0, 0, 0, 0.02) 0 1px 3px 0";
+            btn.style.borderRadius= "1rem";
+            btn.style.boxShadow = "rgba(0, 0, 0, 0.25) 0 4px 12px";
             btn.style.boxSizing = "border-box";
             btn.style.color = "rgba(0, 0, 0, 0.85)";
             btn.style.cursor = "pointer";
             btn.style.display = "inline-flex";
-            btn.style.fontFamily =`system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif`;
+            btn.style.fontFamily =`Roboto`;
             btn.style.fontSize= "16px";
-            btn.style.fontWeight = "600";
+            btn.style.fontWeight = "bold";
             btn.style.justifyContent = "center";
             btn.style.lineHeight = "1.25";
             btn.style.margin = "10px";
             btn.style.minHeight = "3rem";
+            btn.style.fontFamily = "Circular,-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',sans-serif";
             btn.style.padding = "calc(.875rem - 1px) calc(1.5rem - 1px)";
             btn.style.textDecoration ="none";
             btn.style.transition = "all 250ms";
             btn.style.userSelect = "none";
             btn.style.touchAction = "manipulation";
             btn.style.verticalAlign = "baseline";
-            btn.style.width = "auto";
+            btn.style.width = "clamp(10px,100vw,200rem)";
+
+            /*Media Queries */
+
+            if (window.matchMedia("(max-width: 620px)").matches) {
+                btn.style.maxWidth = "150px";
+                btn.style.width="30vw";
+            }
+
             bookings.appendChild(btn);
         }
         isActive = false;
     }
 }
-
-
-function removeTimes(delPeriod){
-    /*Removes childButton from parent class*/
-    const childButton = document.getElementById(`btn-${delPeriod-1}`);
-    /*Checks whether bookings and childButton are both undefined*/
-    if (bookings && childButton) {
-        bookings.removeChild(childButton);
-    }
-}
-
 
 function displayCalendar() {
     /*
@@ -111,6 +109,9 @@ function displayCalendar() {
         year: "numeric"
     });
     display.innerHTML = `${formattedDate}`;
+    if (window.matchMedia("(max-width: 620px)").matches) {
+        display.style.fontSize = "5vw";
+    }
 
     for (let x = 1; x <= firstDayIndex; x++) {
         const div = document.createElement("div");
@@ -139,6 +140,7 @@ function displaySelected() {
         day.addEventListener("click", (e) => {
             let selectedDate = e.target.dataset.date;
             selected.innerHTML = `Selected Date : ${selectedDate}`;
+            selected.style.fontWeight = "bold";
             data = {
                 firstname: "Test",
                 lastname: "Test",
@@ -201,7 +203,7 @@ function onclickBtn(selDate){
         })
         col.addEventListener("mouseout",function(e){
             col.style.borderColor = "rgba(0, 0, 0, 0.15)";
-            col.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 4px 12px";
+            col.style.boxShadow = "rgba(0, 0, 0, 0.5) 0 4px 12px";
             col.style.color = "black";
             col.style.transform="translateY(0px)";
         })
@@ -210,13 +212,51 @@ function onclickBtn(selDate){
             const today = new Date();
             var parts =selDate.split(' ');
             var mydate = new Date( parseInt(parts[3]),months[parts[1]]-1, parseInt(parts[2])); 
-            if(today.getTime()>mydate.getTime()){
+
+            
+            newText = `Please confirm the booking for Date: ${selDate} Period: ${periods[e.target.id[e.target.id.length-1]]}`
+            if(today.toString().slice(0,15) ==selDate){
+
+                    let todayS = today.getHours()*60*60 + today.getMinutes()*60+today.getSeconds()
+                    const periodOneS = 60*60*10 + 55*60
+                    const periodTwoS = 60*60* 13 + 20*60
+                    const periodThreeS = 60*60* 13 + 35*60
+                    if (todayS>periodThreeS){
+                        alert("Select a date that's in the present");
+                    } else if(todayS >periodTwoS &&(col.id =="btn-1"||col.id =="btn-0")){
+                        alert("Select a date that's in the present");
+                    } else if(todayS >periodOneS&&col.id =="btn-0"){
+                        alert("Select a date that's in the present");
+                    } else{
+                        confirmBtns(newText).then(result =>{
+                    if(result == true){
+                    let data = {
+                        firstname: "Test",
+                        lastname: "Test",
+                        period:periods[e.target.id[e.target.id.length-1]],
+                        date:mydate
+                        };
+                    socket.emit('times', {
+                        'data':data
+                    });
+                    // Removing active event listeners
+                    col.replaceWith(col.cloneNode(true)); 
+                }else{
+                    
+                }
+                }).catch(error =>{
+                    console.log(error)
+                }).finally(() =>{
+                    //Pass
+                })
+
+                    }
+                } 
+            else if((today.getTime()>mydate.getTime()) &&(today.toString().slice(0,15) !=selDate)){
                 alert("Select a date that's in the present");
             } else if(bookings.children.length!= 3){
                 alert("You cannot select a time more than once per day");
             }else{
-
-                newText = `Please confirm the booking for Date: ${selDate} Period: ${periods[e.target.id[e.target.id.length-1]]}`
                 confirmBtns(newText).then(result =>{
                     if(result == true){
                     let data = {

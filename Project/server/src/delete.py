@@ -6,6 +6,10 @@ from dateutil.parser import parse
 
 @socketio.on('del')
 def del_data(data): 
+    emit("update_del",{"data":[parse(data["data"]["date"]).isoformat(),data["data"]["period"]],"id":int(data["id"])})
+
+@socketio.on("update_db")
+def update_del(data):
     try:
         response = (
             db.table("info")
@@ -16,8 +20,6 @@ def del_data(data):
             .eq("date",parse(data["data"]["date"]).isoformat())
             .execute()
         )
-        print("Asjflahwrucukagwhdkfjm, bamhnhgrcvf ajemrgv bcajugdb jmgvb ")
-        emit("update_del",{"data":[parse(data["data"]["date"]).isoformat(),data["data"]["period"]],"id":int(data["id"])})
     except:
         raise Exception("Failed to excecute data")
-    return ""
+    return

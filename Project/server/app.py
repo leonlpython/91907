@@ -26,7 +26,6 @@ except:
 #--File Splitting
 import src.webpages
 import src.delete
-import src.deleteolddates
 import src.insertdata
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

@@ -1,230 +1,541 @@
-body {
-    background: #F9F8FD;
-    font-family: 'Lexend Exa', sans-serif;
-  }
-  
-  nav {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-block;
-    border: 2px solid #EBECF1;
-    border-radius: 30px;
-    animation: slide-in 1s ease-out;
-  }
-  
-  ul {
-    position: relative;
-    display: flex;
-    flex: 1 1 auto;
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/*Navigation styling*/
+ul {
     margin: 0;
-    padding: 0 30px;
-    list-style-type: none;
-    li:not(:last-child) {
-      margin-right: 40px;
-    }
-    li {
-      border: 2px solid transparent;
-      border-radius: 5px;
-      padding: 10px;
-      transition: background 0.2s;
-      a {
-        color: #2375D8;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: color 0.2s;
-      }
-      ul {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        display: block;
-        margin: 12px -12px;
-        padding: 0;
-        background: #FFA91B;
-        border: 2px solid #F7C833;
-        border-right: 2px solid #F89329;
-        border-bottom: 2px solid #F89329;
-        border-radius: 5px;
-        transition: opacity 0.2s, visibility 0.2s;
-        li {
-          margin: -2px 0 0 -2px;
-          width: calc(100% - 20px);
-          line-height: 1.7;
-          a {
-            color: #2375D8;
-          }
-        }
-      }
-      &:hover {
-        background: #EC4138;
-        border: 2px solid #F05749;
-        border-right: 2px solid #E02A21;
-        border-bottom: 2px solid #E02A21;
-        a {
-          color: #F9F8FD;
-        }
-        ul {
-          visibility: visible;
-          opacity: 1;
-          box-shadow: 0px 3px 5px 2px #EBECF1;
-          li {
-            a {
-              color: #F9F8FD;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  @keyframes slide-in {
-    0% {
-      top: -50px;
-    }
-    40% {
-      top: 20px;
-    }
-    70% {
-      top: 10px;
-    }
-    100% {
-      top: 15px;
-    }
-  }
-
-
-
-
-
-/*Parallax Background*/
-
-.parallax {
-    background-image:url("/src/assets/quote.jpg");            
-    /* Set a specific height */
-    min-height: 110vh; 
-    background-position: left top;
-    /*parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 1px solid black;
-    }
-.center_text2{
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-.center_text{
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-
-
-
-/*Grid Navigation*/
-
-.section-1{
-    grid-row: sec1;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
-.section-2{
-    grid-row: sec2;
-}
-.section-3{
-    grid-row: sec3;
-}
-.grid-nav{
-    text-align: center;
-    display: grid;
-    grid-template-areas: "sec1 sec2 sec3";
-}
-
-
-/*.popup{
-    text-align: center;
-    display: grid;
-    grid-template-areas: "popup popup";
-}*/
-.popup-container{
-    grid-row: popup;
-    text-align: center;
-    margin-top: 0;
-    margin-right: 150;
-    margin-left: 150;
-    display: grid;
-    grid-template-areas: "box box box";
-
-
-
-}
-.box{
-    grid-row: box;
-}
-
-
-
-
-
-
-
-
-
-.event_button{
-    background-image: url(content/background_img.jpg);
-    width: 25vw;
-    height: 30vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;    
-    opacity: 0.8;
-  }
-  .event_popup-content{
-    background-image: url(content/Event_popup.content.png);
-    height: 40%;
-    width: 40%;
-  }
-  
-  
-  
-  .event_popup {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(
-      0,
-      0,  
-      0,
-      0.4
-    );
-    display: none;
-  }
-  .event_popup-content {
+body{
+    font-family: Roboto;
     background-color: white;
-    margin: 10% auto;
+    border-radius: 15px;
+}
+
+.nav-container li {
+    float: right;
+    list-style: none;
+
+}
+
+.nav-container{
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+.nav-container li a {
+    margin: auto;
+    display: block;
+    color: white;
+    padding: 25px 30px;
+    text-decoration: none;
+}
+
+.nav-container li a:hover:not(.active) {
+    background-color: #111;
+}
+
+/*Calender styling*/
+.calender-container {
+    background-color: #EFEFF0;
+    border-radius: 25px;
+}
+.calender-wrapper {
+    align-items: center;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+header {
+    margin: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.header-display {
+    display: flex;
+    align-items: center;
+}
+
+.header-display p {
+    margin: 5px;
+    font-size: 1.5rem;
+    word-spacing: 0.5rem;
+}
+
+pre {
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 1.8rem;
+}
+
+.days, .week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px 20px;
+    margin: auto;
+    padding: 20px 20px;
+    justify-content: space-between;
+}
+.week div, .days div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+}
+.days div:hover {
+    border: 2px solid #6B5562;
+    border-radius: 10px;
+    color: #6B5562;
+    cursor: pointer;
+}
+
+.week div {
+    opacity: 0.5;
+}
+.current-date {
+    background-color: #6B5562;
+    border-radius: 100%;
+}
+
+.display-selected {
+    margin-bottom: 10px;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+
+
+/*Grid container styling*/
+/**/
+.book-btn-1, .book-btn-2, .book-btn-3{
+    background-color: lightblue;
+    margin: 20px;
+    border-radius: 25px;
+    width: 80%;
+    height: 70%;
+}
+.book-btn-1{
+    grid-area: book1;
+}
+.book-btn-2{
+    grid-area: book2;
+}
+.book-btn-3{
+    grid-area: book3;
+}
+.btn-header{
+    grid-area: btnheader;
+}
+.btn-text{
+    grid-area: btntext;
+}
+.btn-container{
+    grid-area: btncontainer;
+    max-height: 400px;
+    display: grid;
+    grid-template-areas:'btnheader'
+                        'btntext'
+                        'btn';
+}
+.btn-bookings{
+    margin: 2px 200px;
+    grid-area: btn;
+    display: grid;
+    grid-template-areas: 
+        'book1'
+        'book2'
+        'book3';
+}
+
+.calender-container{
+    grid-area: calender;
+    margin: 2px 50px;
+}
+
+.nav-container{
+    grid-area: nav;
+}
+
+.image-section{
+    grid-area: imagesection;
+}
+.center-text{
+    grid-area: centertext;
+    text-align: center;
+}
+.image{
+    grid-area: image;
+    position: absolute;
+    top:220%;
+    right: 3%;
+    z-index: -1;
+}
+
+.main-container{
+    display: grid;
+    float: center;
+    grid-template-areas: 
+        'nav nav'
+        'slideshow slideshow'
+        'slideshowdot slideshowdot'
+        'centertext centertext'
+        'imagesection imagesection'
+        'calender btncontainer'
+        'show image'
+        'footer footer';
+}
+
+footer{
+    grid-area: footer;
+}
+.slideshow-dot{
+    grid-area: slideshowdot;
+}
+.slideshow-container{
+    grid-area: slideshow;
+}
+
+
+.show{
+    grid-area:show;
+    display: absolute;
+}
+
+/*Image section styling*/
+.image-section{
+    background-image: url("/assets/gym.png");
+    background-repeat: no-repeat;
+    height: 1000px;
+    background-size: 100%;
+}
+.img-section-header{
+    background-color: #EAFFFD;
+    padding: 5px 5px 5px 5px;
+    position:absolute;
+    left: 10%;
+    top: 138%;
+}
+
+.img-section-text{
+    background-color: #EAFFFD;
+    font-size: 50px;
+    padding: 5px 5px 5px 5px;
+    position:absolute;
+    left: 10%;
+    top: 145%;
+
+}
+/*Center text styling*/
+.center-text-span{
+    background-color:#000;
+    color:#fff;
+    display:inline-block;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    text-align:center;
+    border-radius: 0;
+}
+
+
+
+/*SlideShow Styling */
+
+
+/* Slideshow styling and animation*/
+*{
+    box-sizing: border-box;
+    /*border-radius: 10px;*/
+}
+.mySlides {display: none;}
+.slideshow-container img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: black;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #6B5E62;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+/* Delete button Styling */
+.del-btn :hover{
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+    transform:translateY(10px)
+}
+
+
+/*Footer Styling*/
+
+footer{
     padding: 20px;
-    border: 1px solid black;
-    width: 30%;
-    font-weight: bolder;
-  }
-  .event_popup-content button {
+    background: #24262b;
+    margin:0;
+}
+
+.container{
+    max-width: 1170px;
+    margin: 0 auto 0 30%;
+}
+
+.row{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.footer-col{
+    width:25%;
+    padding: 0 15px;
+}
+
+.footer-col h4{
+    font-size: 18px;
+    color:#fff;
+    font-weight: 500;
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 2px;
+    width:50px;
+    background: #C9F0FF;
+    box-sizing: border-box;
+}
+
+.footer-col ul{
+    list-style: none;
+    background-color: #24262b;
+}
+
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.footer-col ul li > a{
+    font-size: 16px;
+    font-weight:300;
+    text-transform: capitalize;
+    text-decoration: none;
+    color:#6B5E62;
     display: block;
-    margin: 0 auto;
-  }
-  .show {
-    display: block;
-  }
-  
-  .event_button:hover {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  
+    transition: .3s ease;
+}   
+
+.footer-col ul li > a:hover{
+    color:black;
+    padding-left: 8px;
+}
+
+.footer-col .social-icons{
+    font-size:16px;
+}
+
+.footer-col .social-icons > a{
+    display:inline-block;
+    width:40px;
+    height:40px;
+    text-align: center;
+    margin:0 10px 10px 0;
+    color:#6B5E62;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+
+.footer-col .social-icons > a:hover{
+    transform: translateY(-5px);
+    color:#fff;
+}
+
+@media (max-width:768px){
+    .footer-col{
+        margin-bottom: 30px;
+        width:50%;
+    }
+}
+
+@media (max-width:539px){
+    .footer-col{
+        width:100%;
+    }
+}
+
+
+/*Button Confirmation Modal and Rules Styling*/
+.modal-overlay,.rules-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+
+.hidden {
+  display: none;
+}
+.modal-content,.rule-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    max-height: 500px;
+    width: 90%;
+    text-align: center;
+}
+/*Confirmation modal Button styling*/
+#confirm-booking-time,#close-modal-btn,.close-modal{
+  align-items: center;
+  background-color: #fff;
+  margin: 20px 50px;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 4vw;
+  overflow: visible;
+  padding: 2px 24px;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+}
+
+#confirm-booking-time:hover,#close-modal-btn:hover,.close-modal:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+#confirm-booking-time:active,#close-modal-btn:active,.close-modal:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+#confirm-booking-time:focus,#close-modal-btn:focus,.close-modal:focus  {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+#confirm-booking-time:not(:disabled),#close-modal-btn:not(:disabled),.close-modal:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+#confirm-booking-time:not(:disabled):hover,#close-modal-btn:not(:disabled):hover,.close-modal:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+#confirm-booking-time:not(:disabled):focus,#close-modal-btn:not(:disabled):focus,.close-modal:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+#confirm-booking-time:not(:disabled):active,#close-modal-btn:not(:disabled):active,.close-modal:not(:disabled):active  {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+#confirm-booking-time:disabled,#close-modal-btn:disabled ,.close-modal:not:disabled{
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+
+.rules-button{
+    position:absolute;
+    left: 10%;
+    top: 160%;
+    background-color: rgba(51, 51, 51, 0.05);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    background-color: white;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 15px 17px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.rules-button:hover{
+    background-color:gray;
+    transform: translateY(-1px);
+
+}

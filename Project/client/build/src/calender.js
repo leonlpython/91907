@@ -17,7 +17,7 @@ function createBtns(selectDate, data){
     Args:
         selectDate: Date to create buttons upon
         data: data queried from table
-    */
+    */  
     const months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
     let dummyDate = sessionStorage.setItem("dummyDate",selectDate);
     var activeTimes = data["data"];
@@ -215,6 +215,7 @@ function onclickBtn(selDate){
 
             
             newText = `Please confirm the booking for Date: ${selDate} Period: ${periods[e.target.id[e.target.id.length-1]]}`
+            
             if(today.toString().slice(0,15) ==selDate){
 
                     let todayS = today.getHours()*60*60 + today.getMinutes()*60+today.getSeconds()

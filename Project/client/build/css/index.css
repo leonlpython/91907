@@ -1,47 +1,79 @@
 
 
-
-/*Nav styling*/
-.nav-container ul {
+*{
     margin: 0;
-    list-style: none;
+    font-family: Roboto;
+    padding: 0;
+}
+body {
+  background: linear-gradient(
+    to top, 
+    white 00%, 
+    #EAFFFD 50%, 
+    #000000 90%, 
+    #000000 100%
+  );
+    contain: content;
+    font-family: Roboto;
+    border-radius: 0px;
+    background-color: white;
+}
+
+.image-section{
+    margin: 0;
+}
+
+/*Navigation styling*/
+ul {
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     background-color: #333;
 }
 
 .nav-container li {
-    float: right;
+    list-style: none;
 }
 
+.nav-container{
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    z-index: 1;
+}
 .nav-container li a {
+    margin: auto;
     display: block;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 1.5rem 2em;
+    font-size: 1vw;
     text-decoration: none;
 }
-
 .nav-container li a:hover:not(.active) {
     background-color: #111;
 }
 
-.active {
-    background-color: #04AA6D;
-}
-
-
 /* CSS for column */
 
 .col-split2,.col-split1,.col-split0{
-    height:450px;
+    height:350px;
+    width: 30vw;
     overflow:hidden;
-    background-image: url("../assets/mvhs.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 70%;
 }
-
-
+.col-split0{
+    background-image: url("../assets/background.jpg");
+    background-size: clamp(150%,275%,400%);;
+}
+.col-split1{
+    background-image: url("../assets/background2.jpg");
+    background-size:clamp(150%,275%,400%);
+}
+.col-split2{
+    background-image: url("../assets/background3.jpg");
+    background-size: clamp(150%,275%,400%);
+}
 /* CSS for text module */
 
 .p-split2,.p-split1,.p-split0 {
@@ -52,24 +84,33 @@
 
 
 .p-split2:hover,.p-split1:hover,.p-split0:hover {
-    padding-top:0;
- 
-    color: white;
-    -webkit-text-stroke: 0.5px black;
-;
+    padding-top:30px;
+    color: black;
+    -webkit-text-stroke: 0.5px white;
+    background-color: white;
 }
+
+
+
+
+/*Styling Random Facts*/
+.text li{
+    margin-top: 10px;
+}
+
 
 /* Main Container*/
 .main-container{
     display: grid;
     grid-template-areas:'nav nav nav'
                         'slideshow slideshow slideshow'
-                        'front front front'
                         'showdot showdot showdot'
+                        'front front front'
                         'navtext navtext navtext'
                         'col0 col1 col2'
                         'rules content content'
                         'image image image'
+                        'main main main'
                         'external external external'
                         'footer footer footer';
 }
@@ -102,7 +143,23 @@
 
 
 /* Main container Grid Areas*/
+.text{
+    grid-area: maintext;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.main-image{
+    grid-area: mainimage;
+}
+.main-content{
+    grid-area: main;
+    display: grid;
+    grid-template-areas: "maintext mainimage";
+    margin-bottom: 10px;
+}
 .images{
+    gap: 0;
     grid-area: image;
     display: grid;
     grid-template-areas:'img-sec1'
@@ -183,14 +240,14 @@ footer{
 
 .image-subsection-1{
     position:absolute;
-    left: 65%;
-    top: 225%;
+    left: 5rem;
+    top: 175rem;
     max-width: 500px;
 }
 .image-subsection-2{
     position:absolute;
-    left: 5%;
-    top: 360%;
+    right: 2vw;
+    top: 128rem;
     max-width: 400px;
 }
 
@@ -198,17 +255,7 @@ footer{
 /* split-subcontainer- 0,1,2 sub grid ares */
 
 
-.split-subcontainer-2,.split-subcontainer-1,.split-subcontainer-0{
-    display: grid;
-    grid-template-areas:'p-split'
-                        'b-split';
 
-}
-
-.b-split0,.b-split1,.b-split2{
-    text-align: center;
-    grid-row: b-split;
-}
 .p-split0,.p-split2,.p-split1{
     text-align: center;
     grid-row: p-split;
@@ -221,9 +268,8 @@ footer{
 
 .col-split0,.col-split1,.col-split2{
     
-    border: 1px solid black;
-    padding: 50px;
-    margin: 20px;
+    padding: 5vw;
+    margin: 0.1vw;
 }
 
 
@@ -243,46 +289,27 @@ footer{
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1400px;
   height: 90%;
-  position: relative;
-  margin: auto;
   text-align: center;
 }
-
-/* Caption text */
-.text {
-  color: black;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: relative;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
 /* Number text (1/3 etc) */
 .numbertext {
   color: black;
-  font-size: 12px;
-  padding: 8px 12px;
+  font-size: 1vw;
+  padding: 2vw 3vw;
   position: absolute;
   top: 0;
 }
 
 /* The dots/bullets/indicators */
 .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
+  height: 1vw;
+  width: 1vw;
+  margin: 0 0.1em;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
 }
 
 /* Fading animation */
@@ -297,26 +324,18 @@ footer{
   to {opacity: 1}
 }
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
+/*Footer Styling*/
 
-/*Footer Stylgin*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
-.footer{
-    padding: 20px;
+footer{
+    padding: 2em;
     background: #24262b;
-    font-family: "Poppins", sans-serif;
-    
-    margin:0;
+    min-width: 99vw;
+    width: 100%;
 }
 
 .container{
-    max-width: 1170px;
-    margin: 50px auto 0;
+
+    margin: 0 auto 0 30%;
 }
 
 .row{
@@ -326,15 +345,15 @@ footer{
 }
 
 .footer-col{
-    width:25%;
-    padding: 0 15px;
+    width: 25%;
+    padding: 0em 0.1em;
 }
 
 .footer-col h4{
-    font-size: 18px;
+    font-size: clamp(1rem,1vw,3rem);
     color:#fff;
     font-weight: 500;
-    margin-bottom: 35px;
+    margin-bottom: clamp(1rem,1vw,3rem);
     position: relative;
 }
 
@@ -343,47 +362,43 @@ footer{
     position: absolute;
     left: 0;
     bottom: -10px;
-    height: 2px;
-    width:50px;
-    background: #088178;
+    height: 0.2rem;
+    width:2vw;
+    background: #C9F0FF;
     box-sizing: border-box;
 }
 
 .footer-col ul{
     list-style: none;
+    background-color: #24262b;
 }
 
 .footer-col ul li:not(:last-child){
-    margin-bottom: 10px;
+    margin-bottom: 1vw;
 }
 
 .footer-col ul li > a{
-    font-size: 16px;
+    font-size: clamp(1rem,0.9vw,3rem);
     font-weight:300;
-    color:#fff;
     text-transform: capitalize;
     text-decoration: none;
-    color:#bbb;
+    color:#6B5E62;
     display: block;
     transition: .3s ease;
 }   
 
 .footer-col ul li > a:hover{
-    color:#fff;
-    padding-left: 8px;
-}
-
-.footer-col .social-icons{
-    font-size:16px;
+    color:black;
+    padding-left: 1em;
 }
 
 .footer-col .social-icons > a{
     display:inline-block;
-    width:40px;
-    height:40px;
+    width:3em;
+    height:3em;
     text-align: center;
-    margin:0 10px 10px 0;
-    color:#bbb;
+    margin:0 0.7em 0.7em 0;
+    color:#6B5E62;
     transition: all .3s ease;
     text-decoration: none;
 }
@@ -394,15 +409,123 @@ footer{
     color:#fff;
 }
 
-@media (max-width:768px){
+@media (max-width:1000px){
     .footer-col{
+        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 30px;
         width:50%;
     }
 }
-
 @media (max-width:539px){
     .footer-col{
         width:100%;
     }
+}
+
+
+
+/* Download button styling */
+
+
+.wrap {
+    margin: 1vw auto;
+    text-align: center;
+}
+
+.btn-slide, .btn-slide2 {
+    position: relative;
+    display: inline-block;
+    height: 3rem;
+    width: 15rem;
+    line-height: 2.8rem;
+    padding: 0;
+    border-radius: 10rem;
+    background: #fdfdfd;
+    border: 2px solid #6B5E62;
+    margin: 2rem;
+    transition: .5s;
+}
+
+.btn-slide2 {
+    border: 2px solid #EFEFF0;
+}
+
+.btn-slide:hover {
+    background-color: #EFEFF0;
+    color: black;
+}
+
+.btn-slide2:hover {
+    background-color: #EFEFF0;
+    color: black;
+}
+
+.btn-slide:hover span.circle, .btn-slide2:hover span.circle2 {
+    left: 100%;
+    margin-left: -4rem;
+    background-color: #fdfdfd;
+    color: #0099cc;
+}
+
+.btn-slide2:hover span.circle2 {
+    color: black;;
+}
+
+.btn-slide:hover span.title, .btn-slide2:hover span.title2 {
+    left: 4rem;
+    opacity: 0;
+}
+
+.btn-slide:hover span.title-hover, .btn-slide2:hover span.title-hover2 {
+    opacity: 1;
+    left: 4rem;
+}
+
+.btn-slide span.circle, .btn-slide2 span.circle2 {
+    display: block;
+    background-color: #d5cad6;
+    color: #fff;
+    position: absolute;
+    float: left;
+    margin: 5px;
+    line-height: 2.7rem;
+    height: 2rem;
+    width: 2rem;
+    top: 0;
+    left: 0;
+    transition: .5s;
+    border-radius: 50%;
+}
+
+.btn-slide2 span.circle2 {
+    background-color: #efa666;
+}
+
+.btn-slide span.title,
+  .btn-slide span.title-hover, .btn-slide2 span.title2,
+  .btn-slide2 span.title-hover2 {
+    position: absolute;
+    left: 90px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    color: #d5cad6;
+    transition: .5s;
+}
+
+.btn-slide2 span.title2,
+  .btn-slide2 span.title-hover2 {
+    color: #efa666;
+    left: 80px;
+  }
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+    left: 80px;
+    opacity: 0;
+}
+
+.btn-slide span.title-hover, .btn-slide2 span.title-hover2 {
+    color:black;;
 }

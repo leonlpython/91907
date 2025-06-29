@@ -6,7 +6,7 @@ from dateutil.parser import parse
 
 @socketio.on('del')
 def del_data(data): 
-    emit("update_del",{"data":[parse(data["data"]["date"]).isoformat(),data["data"]["period"]],"id":int(data["id"])})
+    emit("update_del",{"data":[data["data"]["date"],data["data"]["period"]],"id":int(data["id"])})
 
 @socketio.on("update_db")
 def update_del(data):

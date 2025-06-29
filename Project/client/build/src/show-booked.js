@@ -1,4 +1,5 @@
 function appendBookings(dataDate,dataPeriod,i){
+
     /*
     Create bookings within show-bookings-container.
     Args:

@@ -47,7 +47,6 @@ def iso_to_string(date_datetime):
 
 @socketio.on('times')
 def insert_data(data):
-    
     insert_date = datetime.datetime.fromisoformat(data["data"]["date"])
     res_date = insert_date+datetime.timedelta(days=1)
     response = db.table("info").insert({"firstname":data["data"]["firstname"],"lastname":data["data"]["lastname"],"period":data["data"]["period"],"date":res_date.isoformat()}).execute()

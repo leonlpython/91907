@@ -12,10 +12,10 @@ function getdatePeriod(clicked_id){
 
     /* Use "test" user */
     let data = {
-        firstname: "Test",
-        lastname: "Test",
-        period:parseInt(period),
-        date: dateRange
+        "firstname": "Test",
+        "lastname": "Test",
+        "period":parseInt(period),
+        "date": dateRange
         };
     socket.emit("del",
         {"data":data,
@@ -42,15 +42,26 @@ socket.on("update_del",(data) =>{
     const showTime = document.getElementById(`ButtonContainer-${parseInt(data["id"])}`);
     /*If bookings and showtime is not undefined then remove showtime*/
     if (bookings && showTime) {
-        dummyDate = sessionStorage.getItem("dummyDate")
-        replaceText = `Please confirm the deletion for the booking: Date: ${dummyDate} Period: ${data["data"][1]}`
+        replaceText = `Please confirm the deletion for the booking: Date: ${data["data"][0]} Period: ${data["data"][1]}`
         confirmBtns(replaceText).then(result =>{
             if(result == true){
                 showBooked.removeChild(showTime);
-                createBtns(dummyDate,data)
-                onclickBtn(dummyDate);
-                socket.emit("update_db",{"data":data})
-            }})
+                var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                var d = new Date(data["data"][0]);
+                var dayName = days[d.getDay()];
+                createBtns(dayName + " " +data["data"][0],data)
+                onclickBtn(dayName + " " +data["data"][0]);
+                socket.emit("update_db",
+                            {"data":{"firstname": "Test",
+                                        "lastname": "Test",
+                                        "period":data["data"][1],
+                                        "date": data["data"][0]
+                                    }
+                                }
+                            )
+                        }
+                    }
+                )
         .catch(error =>{
             console.log(error)
         }).finally(() =>{

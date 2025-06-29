@@ -2,28 +2,36 @@
 <html lang = "en">
     <head>
         <title>Weights Room Booking</title>
-        <link rel="icon" type="image/x-icon" href="./assets/logo-resized.png">
         <meta name ="lang" content ="en">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/caleder.css">
+
+        <!--External Stylesheets-->
+        <link rel="icon" type="image/x-icon" href="./assets/logo-resized.png">
+        <link rel="stylesheet" href="../css/calendar.css">
+
+        <!--External Scripts-->
+        <!--Scripts for socket io-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
         <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+        <!--Scipt to start an io event-->
         <script src="./src/join.js"></script>
     </head>
 
     <body>
         <div class="main-container">
+            <!--Container to hold navigation components.-->
             <div class = "nav-container">
                 <ul>
                     <li><a href="index.html" style="float: right;">Home</a></li>
-                    <li><a href="excersises.html" style="float: right;">Excersies</a></li>
+                    <li><a href="excercise.html" style="float: right;">Excercises</a></li>
                     <li><a href="#" style="float: right;;">Book</a></li>
                     <li><a href="https://www.mountainview.school.nz/About/Vision/" style="float: right;background-color: #717171;">About MVHS</a></li>
                     <li><a href="index.html"  class="active" style="padding: 0;margin-left: 2vw;float: left;"><img src = "./assets/logo.png" alt="logo" style="height: 7vh;width: 15vw;" class="logo"></a></li>
                 </ul>
             </div>
-            
+            <!--Container to hold slidshow components.-->
+            <!--Slides over each mySlides class-->
             <div class="slideshow-container">
             
                 <div class="mySlides fade">
@@ -45,21 +53,26 @@
                 </div>
             </div>
             <br>
-
+            <!--Container to hold slidshow dots.-->
+            <!--Slides over each dot class-->
             <div class = "slideshow-dot" style="text-align:center">
                 <span class="dot"></span> 
                 <span class="dot"></span> 
                 <span class="dot"></span> 
             </div>
+            <!--Script to run slide over each class-->
             <script src="./src/slideshow.js"></script>
 
             <div class = "center-text">
                 <h1 style="font-size: 3vw;color: white;margin-top: 3%;">Weights Room</h1>
                 <p style="font-size: clap(2rem,1vw,20rem); color: white;margin-top: 1%;">Welcome to the <span class="center-text-span">weights room booking system</span></p>
             </div>
+
+            <!--Section to hold Image and text-->
             <div class="image-section">
                 <h1 class="img-section-header">Gym</h1>
                 <h1 class="img-section-text"><b>Weights Room</b></h1>
+                <!--When button is pressed rules-section is not hidden-->
                 <button id="open-rules" class="rules-button"> Rules</button>
 
                 <div id="rules-modal" class="rules-section hidden">
@@ -75,12 +88,16 @@
                             <li>If an injury occurs inform staff immediately.</li> 
                             <li>Follow all normal school rules.</li>
                         </ol>
+                        <!--When button is pressed rules-section is hidden-->
                         <button id="close-rules" class="close-modal">Close</button>
             
                     </div>
                 </div>
                 <script src="./src/rules.js"></script>
             </div>
+
+
+            <!--Calendar to hold days,months,years-->
             <div class="calender-container">
                 <div class="calendar-wrapper">
                     <div class="calendar">
@@ -91,6 +108,7 @@
                         </div>
                         <pre class="right">▶</pre>
                     </header>
+                    <!--Initialise all days for use in calendar.js-->
                     <div class="week">
                         <div>Su</div>
                         <div>Mo</div>
@@ -104,48 +122,49 @@
                         <!--days will be filled here-->
                       </div>
                     </div>
+                        <!--Active/Selected days will be filled in this class-->
                         <div class="display-selected">
+                            
                             <p class="selected"></p>
                         </div>
                     </div>
                     
                 </div>  
+
+                <!--Container holds avaliable time buttons-->
                 <div class="btn-container">
                     <h1 class = "btn-header" style="text-align: center;margin-top: 5%;" >Available Times</h1>
                     <b class="btn-text" style="text-align: center;margin-top: 5%;">You may only pick a time once per day</b>
                     <div class = "btn-bookings" id = "button-content"></div>
                 </div>
-                    <img src="./assets/run.png" style="height:40rem;width:clamp(20rem,100vw,40rem);background-size: contain;" alt = "Run Image" class="image">
+                <img src="./assets/run.png" style="height:40rem;width:clamp(20rem,100vw,40rem);background-size: contain;" alt = "Run Image" class="image">
                 
+                <!--Class holds confirmation modal-->
                 <button id="openModalBtn" class="Open-modal hidden">Open Modal</button>
                 <div id="confirmation-modal-overlay" class="modal-overlay hidden">
                     <div id="confirmation-modal-content" class="modal-content">
                         <h2 class = "confirmation-header">Confirmation</h2>
                         <p class = "confirmation-text"></p>
+                        <!--When clicked yes it appends a time to display-selected class-->
                         <button id = "confirm-booking-time" class="confirm-booking-time-btn">Yes</button>
                         <button id="close-modal-btn" class="confirm-booking-close-btn">No</button>
                        
                     </div>
                 </div>
+                <!--Script for booking and calendar-->
                 <script src="./src/calender.js"></script>
-
-
-                <div id="app">
-                    <div id="root"></div>
-
-                    <!-- Ignore errors here -->
-                     
-
-                </div>
 
 
                 <div class = "show" style="text-align: center;" id = "show-bookings-container">
                     <p style="font-size: 2vw; text-align: center;font-weight: bold;margin-top: 3%;" class = "booked-times">Booked Times</p>
                 </div>
+
+                <!--Script to show booked and deleted booked times/buttons-->
                 <script src="./src/show-booked.js"></script>
                 <script src = "./src/delete.js"></script>
             </div>
         <footer>
+            <!--Container to hold footer columns-->
             <div class="container">
                 <div class="row">
                     <div class="footer-col">

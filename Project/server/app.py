@@ -4,22 +4,17 @@ from flask_socketio import SocketIO
 import os
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-
+#Secret Keys and URL
 SUPABASE_URL = "https://ryodxxtnkpgnoqrrvpfo.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ5b2R4eHRua3Bnbm9xcnJ2cGZvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NTU0NDAzOCwiZXhwIjoyMDYxMTIwMDM4fQ.y-HiwHEFCarJsKpQwW3xBRRShPWmJcUqtjj5mcxST3Y"
-
-app = Flask(__name__,static_folder='../client/build', static_url_path='',template_folder='../client/build')#, static_folder='../client/build', static_url_path=''
-app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
-socketio = SocketIO(
-    app,
-    logger=True,
-    engineio_logger=True
-)
 try:
+    app = Flask(__name__,static_folder='../client', static_url_path='',template_folder='../client')#, static_folder='../client/build', static_url_path=''
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+    socketio = SocketIO(app,logger=True,engineio_logger=True)
     db = create_client(SUPABASE_URL, SUPABASE_KEY)
     print("Connected!")
 except:
-    raise ConnectionError("Could not connect to database")
+    raise ConnectionError("Could not connect")
 
 
 

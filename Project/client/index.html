@@ -2,27 +2,30 @@
 <html lang = "en">
     <head>
         <title>Weights Room Home</title>
+
         <meta charset =  "UTF-8">
         <meta name ="lang" content ="en">
+        <!--Stylesheets-->
         <link rel="stylesheet" href="../css/index.css">
-        <link href='https://fonts.googleapis.com/css?family=Prompt' rel='stylesheet'>
+        <link rel="icon" type="image/x-icon" href="./assets/logo-resized.png">
         
     </head>
 
     <body>
         <div class="main-container">
-            
+             <!--Container to hold nav components-->
             <div class = "nav-container">
                 <ul>
                     <li><a href="#" style="float: right;">Home</a></li>
-                    <li><a href="excersises.html" style="float: right;">Excersies</a></li>
-                    <li><a href="calender.html" style="float: right;;">Book</a></li>
+                    <li><a href="excercise.html" style="float: right;">Excercises</a></li>
+                    <li><a href="calendar.html" style="float: right;;">Book</a></li>
                     <li><a href="https://www.mountainview.school.nz/About/Vision/" style="float: right;background-color: #717171;">About MVHS</a></li>
                     <li><a href="index.html"  class="active" style="padding: 0;margin-left: 2vw;float: left;"><img src = "./assets/logo.png" alt="logo" style="height: 7vh;width: 15vw;" class="logo"></a></li>
                 </ul>
             </div>
             
-        
+            <!--Container to hold slideshow components-->
+            <!--Slides over each mySlides class-->
             <div class="slideshow-container">
             
                 <div class="mySlides fade">
@@ -45,24 +48,24 @@
 
             </div>
             <br>
-
+            <!--Container to hold slidshow dots.-->
+            <!--Slides over each dot class-->
             <div class = "slideshow-dot" style="text-align:center">
                 <span class="dot"></span> 
                 <span class="dot"></span> 
                 <span class="dot"></span> 
             </div>
             <div class = "front-text">
-                <h1>
+                <header style="color: white;font-size: 2vw;">
                     Welcome to the Weights room booking system
-                </h1>
+                </header>
             </div>
+            <!--Script to run slide over each class-->
             <script src="./src/slideshow.js"></script>
-            
-
 
             <div class = "col-split0" >
                 <a href="calender.html" style="text-decoration:none">
-              
+                    <!--Manually splitting lines rather than automatically doing it-->
                     <p class = "p-split0">
                         The weights room is a phenomenal placeto improve your well being<br>
                          and improve on your health.<br>
@@ -73,43 +76,35 @@
                         To find out more info. <br>
                         read more >>
                     </p>
-
                 </a>
-
             </div>
 
             <div class = "col-split1" >
                 <a href="excersises.html" style="text-decoration:none">
-            
-                <p class = "p-split0">
-                    Demonstrating proper technique and following proper procedures <br>when performing excersies <br>
-                    is crucial for improvements in wellbeing and overall fitness,<br>
-                    and prevents injuries and helps induce proper muscle growth<br> to indended muscle groups.<br>
-                    To find out more.<br> 
-                    read more >>
-                </p>
-            
-            
+                    <p class = "p-split0">
+                        Demonstrating proper technique and following proper procedures <br>when performing excersies <br>
+                        is crucial for improvements in wellbeing and overall fitness,<br>
+                        and prevents injuries and helps induce proper muscle growth<br> to indended muscle groups.<br>
+                        To find out more.<br> 
+                        read more >>
+                    </p>
                 </a>
             </div>
             
             <div class = "col-split2" >
                 <a href="https://www.mountainview.school.nz/Search/?search=physical+education" style="text-decoration:none">
-                
-                <p class = "p-split2">
-                    To find out more info about the weights room refer to.<br>
-                    read more >>
-                </p>
-        
+                    <p class = "p-split2">
+                        To find out more info about the weights room refer to.<br>
+                        read more >>
+                    </p>
                 </a>
             </div>
-
-
-
+            <!--Class to hold text content-->
             <div class="content" style=" text-align: center;margin-top: auto;margin-bottom: auto;">
                 <h2 style="font-size: 2vw;">Welcome to the weights room!</h2>
                 <h3>We’re so excited to have you on board</h3>
                 <p style="font-size: 1vw;">
+                    <!--Manually splitting sentences up rahter than automatically such that it's not longer than 18 words-->
                     As a valued newcomer to our fitness<br>
                     family, we thought we’d send across some handy resources to make your experience as rewarding as possible. <br>
                     At the weights room, we believe fitness is more than just a workout –it’s a lifestyle. <br>
@@ -123,6 +118,7 @@
             
                 </p>
             </div>
+            <!--Class to hold rules-->
             <div class="rules" style="margin-bottom: auto;margin-top: auto;">
                 <p style="text-align: center; font-size: 3vw;">Rules</p>
                 <ol style="font-size: 1vw;text-align: center;">
@@ -144,8 +140,7 @@
                     </a>
                 </div>
             </div>
-                
-
+            <!--Class to hold images-->
 
             <div class="images">
                 <div class="img-section-1">
@@ -154,6 +149,7 @@
 
                         <b>Book</b>
                         <p style="font-size:0.8vw;font-weight: 600;">
+                            <!--Text to fill up gaps-->
                             The weights room is a phenomenal placeto improve your well being<br>
                             and improve on your health.<br>
                             It's open nearly everyday during interval and lunch. <br>
@@ -162,7 +158,9 @@
                             however very soon it will be avaliale to all students.<br>
                             To find out more info. <br>
                         </p>
+                        <!--Class that holds a downlaod button, when hovered it will alternative between each span-->
                         <div class="wrap">
+                            
                             <a href="assets/request.pdf" download class="btn-slide2" style="float: left;">
                                 <span class="circle2"><i class="fa fa-download"></i></span>
                                 <span class="title2" style="font-size: 1vw;">Read more >></span>
@@ -180,12 +178,14 @@
                     <div class="image-subsection-2" style="background-color: white;padding: 1vw;background-size: cover;border: 1px solid black;">
 
                         <b>Excersises</b>
+                        <!--Text to fill up gaps-->
                         <p style="font-size:0.8vw;font-weight: 600;">
                             Demonstrating proper technique and following proper procedures when performing excersies <br>
                             is crucial for improvements in wellbeing and overall fitness,<br>
                             and prevents injuries and helps induce proper muscle growth to indended muscle groups.<br>
                             To find out more.<br> 
                         </p>
+                        <!--Class that holds a downlaod button, when hovered it will alternative between each span-->
                         <div class="wrap">
                             <a href="excersises.html" class="btn-slide2" style="float: left;">
                                 <span class="circle2"><i class="fa fa-download"></i></span>
@@ -203,7 +203,8 @@
                 </div>
                 <div class="text">
                     <h1>Cool Gym Facts</h1>
-                   <ol style="font-weight: 500;font-size: 0.7vw;">
+                    <!--list text, it will have no list style type-->
+                    <ol style="font-weight: 500;font-size: 0.7vw;">
                         <li>Exercise releases endorphins, which can help improve your mood and reduce stress</li>
                         <li>The average person burns around 100 calories per mile when running</li>
                         <li>Muscle weighs more than fat, which means that if you’re gaining muscle through exercise, you may not see a significant decrease in weight</li>
@@ -219,14 +220,16 @@
                     </ol>
                 </div>
             </div>
+            <!--Container to hold posters will be styled horizontally-->
             <div class = "external-content-container">            
                 <img src="assets/poster.png" style="height: 65vh;width: 25vw;" class="poster-container" alt="Poster">      
                 <img src="assets/contract.png" style="height: 65vh;width: 25vw;" class="contract" alt="Contract Part 1">
                 <img src="assets/contract.png" style="height: 65vh;width: 25vw;" class="contract2" alt="Contract Part 2">
             </div>
             
-
+            
             <footer>
+                <!--Container to hold all footer columns-->
                 <div class="container">
                     <div class="row">
                         <div class="footer-col">

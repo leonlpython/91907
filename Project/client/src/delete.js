@@ -24,6 +24,7 @@ function getdatePeriod(clicked_id){
 }
 
 socket.on("ins",(data) =>{
+    // on ins the append the date, and period to the avaliable times and remove it from delete bookings
     appendBookings(data["data"][0],data["data"][1],parseInt(data["count"])-1);
     removeTimes(data["data"][1]);
 }); 
@@ -46,9 +47,10 @@ socket.on("update_del",(data) =>{
         confirmBtns(replaceText).then(result =>{
             if(result == true){
                 showBooked.removeChild(showTime);
-                var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-                var d = new Date(data["data"][0]);
-                var dayName = days[d.getDay()];
+                let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                let d = new Date(data["data"][0]);
+                let dayName = days[d.getDay()];
+                //Concatinating string to accepted foramt
                 createBtns(dayName + " " +data["data"][0],data)
                 onclickBtn(dayName + " " +data["data"][0]);
                 socket.emit("update_db",

@@ -70,6 +70,7 @@ ul {
     box-shadow: rgba(0, 0, 0, 0.2) 0 8px 15px;
 
 }
+
 header {
     margin: 2vw 2vw;
     display: flex;
@@ -134,7 +135,6 @@ pre {
 
 
 /*Grid container styling*/
-/**/
 .book-btn-1, .book-btn-2, .book-btn-3{
     background-color: lightblue;
     margin: 1vw;
@@ -156,24 +156,6 @@ pre {
 }
 .btn-text{
     grid-area: btntext;
-}
-.btn-container{
-    grid-area: btncontainer;
-    max-height: 400px;
-    height: 100%;
-    display: grid;
-    grid-template-areas:'btnheader'
-                        'btntext'
-                        'btn';
-}
-.btn-bookings{
-    margin: auto;
-    grid-area: btn;
-    display: grid;
-    grid-template-areas: 
-        'book1'
-        'book2'
-        'book3';
 }
 
 .calender-container{
@@ -229,7 +211,25 @@ footer{
 .show{
     grid-area:show;
 }
-
+/*Buttons container styling */
+.btn-container{
+    grid-area: btncontainer;
+    max-height: 400px;
+    height: 100%;
+    display: grid;
+    grid-template-areas:'btnheader'
+                        'btntext'
+                        'btn';
+}
+.btn-bookings{
+    margin: auto;
+    grid-area: btn;
+    display: grid;
+    grid-template-areas: 
+        'book1'
+        'book2'
+        'book3';
+}
 /*Image section styling and Rules Styling*/
 .rules-section {
     position: fixed;
@@ -450,12 +450,102 @@ footer{
     text-decoration: none;
 }
 
-
 .footer-col .social-icons > a:hover{
     transform: translateY(-5px);
     color:#fff;
 }
 
+/*Button Confirmation Modal */
+
+.modal-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+
+.hidden {
+  display: none;
+}
+.modal-content,.rule-content{
+    background-color: white;
+    position: sticky;
+    top: 50%;
+    padding: 1.25em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 35em;
+    max-height: 70em;
+    width: 90%;
+    text-align: center;
+}
+/*Confirmation modal Button styling*/
+#confirm-booking-time,#close-modal-btn,.close-modal{
+  align-items: center;
+  background-color: #fff;
+  margin: 0.8em 2em;
+  border-radius: 5em;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-size: 1em;
+  font-weight: 500;
+  height: 3em;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 4vw;
+  overflow: visible;
+  padding: 0.5em 1em;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+}
+
+#confirm-booking-time:hover,#close-modal-btn:hover,.close-modal:hover {
+  background: #F6F9FE;
+  color: #174ea6;
+}
+
+#confirm-booking-time:active,#close-modal-btn:active,.close-modal:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+#confirm-booking-time:focus,#close-modal-btn:focus,.close-modal:focus  {
+  outline: none;
+  border: 0.1em solid #C9F0FF;
+}
+
+#confirm-booking-time:not(:disabled),#close-modal-btn:not(:disabled),.close-modal:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+#confirm-booking-time:not(:disabled):hover,#close-modal-btn:not(:disabled):hover,.close-modal:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+#confirm-booking-time:not(:disabled):focus,#close-modal-btn:not(:disabled):focus,.close-modal:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+/*Specific device and max width styling*/
 @media (max-width:1000px){
     .footer-col{
         margin-left: 0;
@@ -554,98 +644,3 @@ footer{
   }
 
 }
-
-/*Button Confirmation Modal */
-
-.modal-overlay{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-
-
-.hidden {
-  display: none;
-}
-.modal-content,.rule-content{
-    background-color: white;
-    position: sticky;
-    top: 50%;
-    padding: 1.25em;
-    border-radius: 0.5em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 35em;
-    max-height: 70em;
-    width: 90%;
-    text-align: center;
-}
-/*Confirmation modal Button styling*/
-#confirm-booking-time,#close-modal-btn,.close-modal{
-  align-items: center;
-  background-color: #fff;
-  margin: 0.8em 2em;
-  border-radius: 5em;
-  border-style: none;
-  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-  box-sizing: border-box;
-  color: #3c4043;
-  cursor: pointer;
-  display: inline-flex;
-  fill: currentcolor;
-  font-size: 1em;
-  font-weight: 500;
-  height: 3em;
-  justify-content: center;
-  letter-spacing: .25px;
-  line-height: normal;
-  max-width: 4vw;
-  overflow: visible;
-  padding: 0.5em 1em;
-  text-transform: none;
-  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
-  user-select: none;
-  touch-action: manipulation;
-  width: auto;
-  will-change: transform,opacity;
-  z-index: 0;
-}
-
-#confirm-booking-time:hover,#close-modal-btn:hover,.close-modal:hover {
-  background: #F6F9FE;
-  color: #174ea6;
-}
-
-#confirm-booking-time:active,#close-modal-btn:active,.close-modal:active {
-  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-  outline: none;
-}
-
-#confirm-booking-time:focus,#close-modal-btn:focus,.close-modal:focus  {
-  outline: none;
-  border: 0.1em solid #C9F0FF;
-}
-
-#confirm-booking-time:not(:disabled),#close-modal-btn:not(:disabled),.close-modal:not(:disabled) {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
-}
-
-#confirm-booking-time:not(:disabled):hover,#close-modal-btn:not(:disabled):hover,.close-modal:not(:disabled):hover {
-  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
-}
-
-#confirm-booking-time:not(:disabled):focus,#close-modal-btn:not(:disabled):focus,.close-modal:not(:disabled):focus {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
-}
-
-
-
-
-

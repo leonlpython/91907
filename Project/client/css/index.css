@@ -1,10 +1,10 @@
-
-
+/*Reset and give default font family*/
 *{
     margin: 0;
     font-family: Roboto;
     padding: 0;
 }
+/*Body styling*/
 body {
   background: linear-gradient(
     to top, 
@@ -19,9 +19,6 @@ body {
     background-color: white;
 }
 
-.image-section{
-    margin: 0;
-}
 
 /*Navigation styling*/
 ul {
@@ -167,6 +164,7 @@ ul {
                         'img-sec3';
 }
 
+/*Grid areas*/
 footer{
     grid-area: footer;
 }
@@ -177,8 +175,6 @@ footer{
 .external-content-container{
     grid-area: external;
 }
-
-
 .col-split0{
     grid-area: col0;
 }
@@ -217,15 +213,12 @@ footer{
     grid-area: showdot;
 }
 
-
-
 .poster1{
     grid-area: poster1;
 }
 .poster2{
     grid-area: poster2;
 }
-
 
 /* Image section */
 .img-section-1{
@@ -251,20 +244,14 @@ footer{
     max-width: 400px;
 }
 
-
 /* split-subcontainer- 0,1,2 sub grid ares */
-
-
 
 .p-split0,.p-split2,.p-split1{
     text-align: center;
     grid-row: p-split;
 }
 
-
-
 /* 3 column split styling*/
-
 
 .col-split0,.col-split1,.col-split2{
     
@@ -272,15 +259,10 @@ footer{
     margin: 0.1vw;
 }
 
-
 /*front-text*/
 .front-text{
     text-align: center;
 }
-
-
-
-
 
 /* Slideshow styling and animation*/
 *{box-sizing: border-box;}
@@ -409,6 +391,8 @@ footer{
     color:#fff;
 }
 
+
+/* Styling for specific widths and screens*/
 @media (max-width:1000px){
     .footer-col{
         margin-left: 0;
@@ -423,11 +407,7 @@ footer{
     }
 }
 
-
-
 /* Download button styling */
-
-
 .wrap {
     margin: 1vw auto;
     text-align: center;

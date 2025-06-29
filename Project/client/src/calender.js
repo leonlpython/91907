@@ -6,7 +6,6 @@ let next = document.querySelector(".right");
 let selected = document.querySelector(".selected");
 let bookings = document.getElementById("button-content");
 const periods = [1,2,3];
-
 let date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth();
@@ -159,7 +158,9 @@ function displaySelected() {
 
 
 async function confirmBtns(changeText){
-
+    /*Waits till button event is triggered then returns if it has been triggered
+    Args: String: changetext - Text to replace text content with
+    return boolean*/
     let closeModalBtn = document.getElementById('close-modal-btn');
     var modalOverlay = document.getElementById('confirmation-modal-overlay');
     let modalTextContent = document.getElementsByClassName("confirmation-text")[0];
@@ -168,33 +169,37 @@ async function confirmBtns(changeText){
         modalOverlay.classList.remove('hidden');
         return await new Promise(function(resolve,reject){
             // Close modal when clicking outside the content
-        modalOverlay.addEventListener('click', (event) => {
-            if (event.target === modalOverlay) {
-                modalOverlay.classList.add("hidden")
+            modalOverlay.addEventListener('click', (event) => {
+                if (event.target === modalOverlay) {
+                    modalOverlay.classList.add("hidden")
+                    resolve(false);
+                }
+            }); 
+            //Event Listeners
+            closeModalBtn.addEventListener('click', function(e){
+                modalOverlay.classList.add('hidden');
                 resolve(false);
-            }
-        }); 
-        closeModalBtn.addEventListener('click', function(e){
-            modalOverlay.classList.add('hidden');
-            resolve(false);
-        });
-        openModalBtn.addEventListener("click",function(event){
-            event.stopPropagation()
-            modalOverlay.classList.add('hidden');
-            // Removing active event listeners
-            openModalBtn.replaceWith(openModalBtn.cloneNode(true));
-            resolve(true);
-           
-        });
-    }).then()
+            });
+            openModalBtn.addEventListener("click",function(event){
+                event.stopPropagation()
+                modalOverlay.classList.add('hidden');
+                // Removing active event listeners
+                openModalBtn.replaceWith(openModalBtn.cloneNode(true));
+                resolve(true);
+            });
+        }
+    ).then()
 }
 
 
 function onclickBtn(selDate){
+    /*Creates button times when date has been triggered
+    Args: selDate - Date selected*/
     const periods = [1,2,3];
     
     var buttons = document.querySelectorAll(".book-btn");
     for (let col of buttons){
+        //Add event listners for each col
         col.addEventListener("mouseover", function(e){
             col.style.borderColor = "rgba(0, 0, 0, 0.15)";
             col.style.boxShadow = "rgba(0, 0, 0, 0.1) 0 4px 12px";
@@ -212,16 +217,14 @@ function onclickBtn(selDate){
             const today = new Date();
             var parts =selDate.split(' ');
             var mydate = new Date( parseInt(parts[3]),months[parts[1]]-1, parseInt(parts[2])); 
-
-            
             newText = `Please confirm the booking for Date: ${selDate} Period: ${periods[e.target.id[e.target.id.length-1]]}`
-            
+            //Check if the time is past the times for period 1,2,3
             if(today.toString().slice(0,15) ==selDate){
-
                     let todayS = today.getHours()*60*60 + today.getMinutes()*60+today.getSeconds()
                     const periodOneS = 60*60*10 + 55*60
                     const periodTwoS = 60*60* 13 + 20*60
                     const periodThreeS = 60*60* 13 + 35*60
+                    //If the time is in the future, alert the user else allow then to add a time
                     if (todayS>periodThreeS){
                         alert("Select a date that's in the present");
                     } else if(todayS >periodTwoS &&(col.id =="btn-1"||col.id =="btn-0")){
@@ -287,6 +290,7 @@ function onclickBtn(selDate){
 // Call the function to display the calendar
 displayCalendar();
 displaySelected();
+//Event listners for previous and next events
 previous.addEventListener("click", () => {
   days.innerHTML = "";
   selected.innerHTML = "";

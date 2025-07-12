@@ -1,6 +1,6 @@
 from __main__ import db
-from typing import List
-def get_data(**indexes: List[str]) -> None:
+from typing import List,Any
+def get_data(**indexes: List[str]) -> Any:
     """
     Gets data from database
     Args:List[str]: Column names of database 

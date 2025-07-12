@@ -3,7 +3,7 @@ from __main__ import socketio,db
 import src.getdata as get
 from flask_socketio import emit
 from typing import Dict,Any
-def to_dict(d:Dict[str,Any]):
+def to_dict(d:Dict[str,Any]) -> Dict[str,Any]:
     """
     Helper Function to convert d to dict where each value is formatted correctly
     Args: Dict[str,Any] : data to be formatted correctly

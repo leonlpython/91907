@@ -5,7 +5,7 @@ from flask_socketio import emit
 from typing import Any
 #Serve Webpages
 @app.route('/')
-def serve()->render_template:
+def serve() -> render_template:
     return render_template("index.html")
 
 @socketio.on("join_booked")
